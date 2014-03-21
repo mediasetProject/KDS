@@ -24,7 +24,7 @@
      -->
 
 		<div id="" class="main-content">
-		   메인영역ㄹ
+		   메인영역
 		</div>
 
 	<!-- 
