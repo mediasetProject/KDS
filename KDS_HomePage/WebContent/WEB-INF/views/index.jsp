@@ -8,5 +8,7 @@
 <body>
 <a href="/">인덱스</a>
 
+<a href="/sample">샘플</a>
+
 </body>
 </html>

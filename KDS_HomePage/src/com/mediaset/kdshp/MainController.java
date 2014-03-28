@@ -44,5 +44,53 @@ public class MainController {
 		return "index";
 	}
 	
+			
+	//
+	@RequestMapping(value = "/sample")
+	public String sample(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "sample2.mv";
+	}		
+			
+	@RequestMapping(value = "/company")
+	public String sample1(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "company/sample.mv";
+	}
+	@RequestMapping(value = "/advert")
+	public String sample2(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "advert/sample.mv";
+	}
+	@RequestMapping(value = "/support")
+	public String sample3(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "support/sample.mv";
+	}
+	@RequestMapping(value = "/broadcast")
+	public String sample4(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "broadcast/sample.mv";
+	}
 	
 }
