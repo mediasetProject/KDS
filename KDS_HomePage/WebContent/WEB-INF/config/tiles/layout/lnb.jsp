@@ -1,12 +1,13 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="m_lnb">
  <ul class="lnb">
-  <li><a href="/company">Company</a></li>
-  <li><a href="/broadcast">방송</a></li>
-  <li><a href="/advert">광고</a></li>
-  <li><a href="/support">고객지원</a></li>
-  <li><a href="#">다운로드</a></li>
+  <li><a href="#" onClick="mNavi.hrefPost('/company'   ,'1')"  class="<c:if test="${lnbIdx eq '1'}">lnbClick</c:if>">Company</a></li>
+  <li><a href="#" onClick="mNavi.hrefPost('/broadcast' ,'2')"  class="<c:if test="${lnbIdx eq '2'}">lnbClick</c:if>">방송</a></li>
+  <li><a href="#" onClick="mNavi.hrefPost('/advert'    ,'3')"  class="<c:if test="${lnbIdx eq '3'}">lnbClick</c:if>">광고</a></li>
+  <li><a href="#" onClick="mNavi.hrefPost('/support'   ,'4')"  class="<c:if test="${lnbIdx eq '4'}">lnbClick</c:if>">고객지원</a></li>
+  <li><a href="#" onClick="mNavi.hrefPost('/download'  ,'5')"  class="<c:if test="${lnbIdx eq '5'}">lnbClick</c:if>">다운로드</a></li>
   <li class="last">
    <pre>
      (주)바른몸
@@ -14,6 +15,8 @@
      서울시 강남구 테헤란로 437 4층
      Tel : 02.6203.1231
      Fax : 02.6008.7871
+
+    
     </pre> 
   </li>
  </ul>

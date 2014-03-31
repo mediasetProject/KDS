@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- 
+	<sub_view>
+	     <name>서브페이지 명</name>
+	     <value>서브페이지 순번 (1~)</value>
+	     <desc>서브페이지 설명</desc>
+	</sub_view> 
+	-->
+
+  <sub_views>
+     <!-- Company 서브페이지 목록 -->
+    <company>
+       <sub_view>
+          <name>c1</name>
+          <value>1</value>
+          <desc>KDS란</desc>
+       </sub_view>
+       <sub_view>
+          <name>c2</name>
+          <value>2</value>
+          <desc>의료정책</desc>
+       </sub_view>
+       <sub_view>
+          <name>c3</name>
+          <value>3</value>
+          <desc>네트워크구성</desc>
+       </sub_view>
+       <sub_view>
+          <name>c4</name>
+          <value>4</value>
+          <desc>비전</desc>
+       </sub_view>
+       <sub_view>
+          <name>c5</name>
+          <value>5</value>
+          <desc>찾아오시는길</desc>
+       </sub_view>
+    </company>
+    
+    <!--  방송 서브페이지 목록 -->
+    <broadcast>
+       <sub_view>
+          <name>b1</name>
+          <value>1</value>
+          <desc>KDS방송</desc>
+       </sub_view>
+       <sub_view>
+          <name>b2</name>
+          <value>2</value>
+          <desc>방송편성</desc>
+       </sub_view>
+       <sub_view>
+          <name>b3</name>
+          <value>3</value>
+          <desc>방송보기</desc>
+       </sub_view>
+       <sub_view>
+          <name>b4</name>
+          <value>4</value>
+          <desc>제휴문의</desc>
+       </sub_view>
+    </broadcast>
+    
+    <!--  광고 서브페이지 목록 -->
+    <advert>
+       <sub_view>
+          <name>a1</name>
+          <value>1</value>
+          <desc>광고상품안내</desc>
+       </sub_view>
+       <sub_view>
+          <name>a2</name>
+          <value>2</value>
+          <desc>광고표출안내</desc>
+       </sub_view>
+       <sub_view>
+          <name>a3</name>
+          <value>3</value>
+          <desc>광고단가</desc>
+       </sub_view>
+       <sub_view>
+          <name>a4</name>
+          <value>4</value>
+          <desc>문의/신청안내</desc>
+       </sub_view>
+    </advert>
+    
+    <!--  고객지원 서브페이지 목록 -->
+    <support>
+       <sub_view>
+          <name>s1</name>
+          <value>1</value>
+          <desc>공지사항</desc>
+       </sub_view>
+       <sub_view>
+          <name>s2</name>
+          <value>2</value>
+          <desc>보도자료</desc>
+       </sub_view>
+       <sub_view>
+          <name>s3</name>
+          <value>3</value>
+          <desc>신청서작성</desc>
+       </sub_view>
+       <sub_view>
+          <name>s4</name>
+          <value>4</value>
+          <desc>FAQ</desc>
+       </sub_view>
+    </support>
+    
+ </sub_views>
+  

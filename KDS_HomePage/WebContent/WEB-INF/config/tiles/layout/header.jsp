@@ -11,6 +11,7 @@
 
 
   <link rel="stylesheet" href="/css/layout.css" /> 
+  <link rel="stylesheet" href="/css/navigator.css" /> 
  
 
 
@@ -20,3 +21,8 @@
  
   <script src="/js/jQuery/js/jquery-1.10.2.js"></script>
   <script src="/js/jQuery/js/jquery-ui-1.10.4.custom.min.js"></script>
+
+  
+  
+  
+  

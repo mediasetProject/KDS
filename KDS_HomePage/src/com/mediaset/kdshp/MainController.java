@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mediaset.kdshp.util.XmlFileManager;
 
 
 @Controller
@@ -21,6 +24,8 @@ public class MainController {
 	
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
+	
+	
 	
 	/**
 	 * <p>KDS 홈페이지 Root</p>
@@ -40,12 +45,26 @@ public class MainController {
 		logger.info("SysInfo > os.version    : " + System.getProperty("os.version"));
 		logger.info("SysInfo > file.encoding : " + System.getProperty("file.encoding"));
 		
+		
+		HttpSession session = request.getSession();
+		
+		
+		// 서브페이지 리스트 세션 등록
+		String sub_views_XF = "http://"+request.getServerName()+":"+request.getServerPort()+"/xml/sub_views.xml";
+		
+		session.setAttribute("company_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "company"));
+		session.setAttribute("broadcast_views", XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "broadcast"));
+		session.setAttribute("advert_views"   , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "advert"));
+		session.setAttribute("support_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "support"));
+
+		
+		
 		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "index";
 	}
 	
 			
-	//
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping(value = "/sample")
 	public String sample(HttpServletRequest request) {
 		
@@ -55,42 +74,10 @@ public class MainController {
 		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "sample2.mv";
 	}		
-			
-	@RequestMapping(value = "/company")
-	public String sample1(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
-		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "company/sample.mv";
-	}
-	@RequestMapping(value = "/advert")
-	public String sample2(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
-		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "advert/sample.mv";
-	}
-	@RequestMapping(value = "/support")
-	public String sample3(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
-		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "support/sample.mv";
-	}
-	@RequestMapping(value = "/broadcast")
-	public String sample4(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
-		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "broadcast/sample.mv";
-	}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	
+	
+
+
+
 }
