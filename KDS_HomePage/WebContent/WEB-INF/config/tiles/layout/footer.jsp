@@ -14,12 +14,26 @@ var mNavi ={
 		   $("#hrefPostForm input[name=lnbIdx]").val(lnbIdx);
 		   $("#hrefPostForm input[name=snbIdx]").val(snbIdx);
 		   $("#hrefPostForm").attr({action:url}).submit();
+	 },
+	 
+
+	 openPDF : function(obj){
+		 
+			$(this).attr("target","_blank");
+			window.open("/download");
+			return false;
 	 }
 }
 
 
-jQuery(function($) {
 
+jQuery(function($) {
+	
+/*  $('.openPopup').popupWindow({ 
+		 centerScreen:1 
+		 });  */  
+	  
+	
     // 페이지 초기화
     initDocument();
 });

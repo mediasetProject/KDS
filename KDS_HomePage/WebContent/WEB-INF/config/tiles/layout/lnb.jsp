@@ -7,7 +7,7 @@
   <li><a href="#" onClick="mNavi.hrefPost('/broadcast' ,'2')"  class="<c:if test="${lnbIdx eq '2'}">lnbClick</c:if>">방송</a></li>
   <li><a href="#" onClick="mNavi.hrefPost('/advert'    ,'3')"  class="<c:if test="${lnbIdx eq '3'}">lnbClick</c:if>">광고</a></li>
   <li><a href="#" onClick="mNavi.hrefPost('/support'   ,'4')"  class="<c:if test="${lnbIdx eq '4'}">lnbClick</c:if>">고객지원</a></li>
-  <li><a href="#" onClick="mNavi.hrefPost('/download'  ,'5')"  class="<c:if test="${lnbIdx eq '5'}">lnbClick</c:if>">다운로드</a></li>
+  <li><a href="#" onClick="mNavi.openPDF(this)">다운로드</a></li>
   <li class="last">
    <pre>
      (주)바른몸
@@ -21,3 +21,4 @@
   </li>
  </ul>
 </div>
+

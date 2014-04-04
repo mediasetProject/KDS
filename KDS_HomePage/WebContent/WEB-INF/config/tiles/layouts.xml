@@ -20,9 +20,5 @@
         <put-attribute name="snb"      value="/WEB-INF/views/{1}/snb.jsp" />
         <put-attribute name="contents" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
-    <definition name="*/*/*.mv" 		extends="default.mv">
-        <put-attribute name="snb"      value="/WEB-INF/views/{1}/snb.jsp" />
-        <put-attribute name="contents" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
-    </definition>
 
 </tiles-definitions>

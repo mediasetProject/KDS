@@ -23,6 +23,5 @@
   <script src="/js/jQuery/js/jquery-ui-1.10.4.custom.min.js"></script>
 
   
-  
-  
+ <script src="/js/plugins/jquery.popupWindow.js"></script>
   

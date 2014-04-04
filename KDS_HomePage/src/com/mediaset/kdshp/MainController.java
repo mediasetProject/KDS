@@ -64,19 +64,35 @@ public class MainController {
 	}
 	
 			
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * <p>KDS 홈페이지 다운로드 메뉴</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest - 요청 데이터
+	 */
+	@RequestMapping(value = "/download")
+	public String pdfDownload(HttpServletRequest request) {
+		
+		logger.info("Msg> Connect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		
+		
+		logger.info("Msg> Disconnect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "/download/pdfview";
+	}		
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+	
 	@RequestMapping(value = "/sample")
 	public String sample(HttpServletRequest request) {
 		
-		logger.info("Msg> Connect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		logger.info("Msg> Connect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		
 		
-		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		logger.info("Msg> Disconnect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "sample2.mv";
 	}		
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////		
-	
-	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
 
 

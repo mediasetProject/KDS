@@ -32,7 +32,7 @@ public class Company {
 	 * 
 	 * @param request HttpServletRequest - 요청 데이터
 	 */
-	@RequestMapping(value = "/company",method=RequestMethod.POST)
+	@RequestMapping(value = "/company", method=RequestMethod.POST)
 	public String moveToCompany(HttpServletRequest request) {
 		
 		logger.info("Msg> Connect(/company)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");

@@ -14,17 +14,13 @@
 
 var mMain={
 
- actEvent:function(){
-	alert("이벤트 핸들러 초기화"); 
- },
- 
- init:function(){
+	 actEvent:function(){
+		
+	 },
 	 
-	 $("#tabs").tabs();
-	getContentTab(1);	
-
-	 
- }
+	 init:function(){
+		
+	 }
 };
 
 
@@ -38,14 +34,3 @@ function initDocument(){
 }
 
 
-
-function getContentTab(index){
-	//var url="/user/list" + index;  
-	var targetDiv = "#tabs-" + index; 
-
-	$(targetDiv).html(result)
-	
-/*	$.get(url, null, function(result){
-		$(targetDiv).html(result);   // 해당 div에 결과가 나타남
-	});*/
-}
