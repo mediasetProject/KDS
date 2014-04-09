@@ -14,6 +14,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mediaset.kdshp.util.MailSendComponent;
 import com.mediaset.kdshp.util.XmlFileManager;
 
 
@@ -88,6 +89,8 @@ public class MainController {
 		
 		logger.info("Msg> Connect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		
+		
+
 		
 		logger.info("Msg> Disconnect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "sample2.mv";

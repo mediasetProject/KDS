@@ -43,7 +43,7 @@ ul.lnb li a{
 ul.lnb li.last {
 	padding-left:0px;
 	border: 1px solid #aaa;
-	height:400px;
+	min-height:400px;
 	border-bottom:none;
 }
 

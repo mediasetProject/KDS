@@ -1,11 +1,13 @@
 package com.mediaset.kdshp;
 
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,11 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mediaset.kdshp.dao.common.AjaxResultCode;
+import com.mediaset.kdshp.util.MailSendComponent;
 import com.mediaset.kdshp.util.XmlFileManager;
 
 @Controller
@@ -24,6 +30,8 @@ public class support {
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
+	@Autowired
+	private MailSendComponent mailSender;
 	
 	
 	/**
@@ -54,5 +62,59 @@ public class support {
 		logger.info("Msg> Disconnect(/support)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "support/"+viewName+".mv";
 	}
+	
+	
+	
+	/**
+	 * <p>고객지원 - 신청서작성</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/mkApplication.json",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject makeApplication(HttpServletRequest request,
+												          @RequestParam Map<String, String> mMap){
+		
+		logger.info("Msg> Connect(support > makeApplication)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		
+		String dentalClinic = mMap.get("dentalClinic");
+		String dentist      = mMap.get("dentist");
+		String contact      = mMap.get("contract");
+		String addr         = mMap.get("addr"); 
+		String memo         = mMap.get("memo"); 
+		
+		
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		 StringBuilder contents = new StringBuilder();
+		 contents.append("<p><b>"+ dentalClinic +" ("+ dentist +" <small>원장님</small>)</b>에서 셋탑박스 설치를 요청하였습니다.</p>");
+		 contents.append("<p>"+ memo +"</p>");
+		 contents.append("<p>"+ addr +" </p>");
+		 contents.append("<p>"+ contact +"</p>");
+
+		 try {
+			mailSender.sendMail("("+dentalClinic+") 의료정책방송 신청", contents.toString());
+			
+			// 신청내용 DB 저장
+			
+			
+		} catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		}
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(support > makeApplication)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+		
+	
 
 }

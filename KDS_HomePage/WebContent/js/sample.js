@@ -19,6 +19,13 @@ var mMain={
 	 },
 	 
 	 init:function(){
+		 alert(Modernizr)
+		 
+		 if(Modernizr.video){
+			    alert("동영상 지원이 된다.");
+			}else{   
+			    alert("동영상 지원이 되지 않는다.");
+			}
 		
 	 }
 };

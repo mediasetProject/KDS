@@ -16,6 +16,17 @@
      <!-- 파일다운로드-->
      <bean id="download" class="com.mediaset.kdshp.util.DownloadView" />
   
+      <!-- Email-->
+     <bean id="mailSender" class="com.mediaset.kdshp.util.MailSendComponent" />
+  
+    <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	        <list>
+	            <ref bean="jacksonMessageConverter"/>
+	        </list>
+	    </property>
+	</bean>
   
 </beans>
 

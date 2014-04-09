@@ -1,8 +1,18 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ page import="com.mediaset.kdshp.dao.common.AjaxResultCode" %>
+
+<script type="text/javascript">
+
+ var ajaxResultCode = {
+		 SUCCESS : <%=AjaxResultCode.SUCCESS%>,
+		 FAIL    : <%=AjaxResultCode.FAIL%>,
+     }
+ 
+</script>
 
      <div id="t_container">
        <div class="top_logo">
-            <a href="#" onClick="" id="">
+            <a href="/" id="">
                 <img src="/images/common/kds_logo.png" alt="kds 의료정책방송" title="KDS(의료정책 방송)" />
             </a>
        </div> 

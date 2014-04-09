@@ -99,7 +99,7 @@
           <desc>보도자료</desc>
        </sub_view>
        <sub_view>
-          <name>s3</name>
+          <name>mk_allpication</name>
           <value>3</value>
           <desc>신청서작성</desc>
        </sub_view>

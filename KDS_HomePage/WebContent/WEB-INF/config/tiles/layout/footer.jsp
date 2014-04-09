@@ -6,36 +6,36 @@
   <input type="hidden" name="snbIdx" value=""/>
 </form>
 
-<script type="text/javascript">
 
-var mNavi ={
-		
-	hrefPost : function(url, lnbIdx, snbIdx){
-		   $("#hrefPostForm input[name=lnbIdx]").val(lnbIdx);
-		   $("#hrefPostForm input[name=snbIdx]").val(snbIdx);
-		   $("#hrefPostForm").attr({action:url}).submit();
-	 },
-	 
+ <!------- 네비게이션 ------>
+	<script type="text/javascript">
+		var mNavi ={
+				
+			hrefPost : function(url, lnbIdx, snbIdx){
+				   $("#hrefPostForm input[name=lnbIdx]").val(lnbIdx);
+				   $("#hrefPostForm input[name=snbIdx]").val(snbIdx);
+				   $("#hrefPostForm").attr({action:url}).submit();
+			 },
+			 
+			 openPDF : function(obj){
+				 
+					$(this).attr("target","_blank");
+					window.open("/download");
+					return false;
+			 }
+		}
+	</script>
 
-	 openPDF : function(obj){
-		 
-			$(this).attr("target","_blank");
-			window.open("/download");
-			return false;
-	 }
-}
 
 
 
-jQuery(function($) {
-	
-/*  $('.openPopup').popupWindow({ 
-		 centerScreen:1 
-		 });  */  
-	  
-	
-    // 페이지 초기화
-    initDocument();
-});
 
-</script>
+
+ 
+  <!------- 문서로드 완료------>
+  
+	<script type="text/javascript">
+		jQuery(function($) {
+		    initDocument();// 페이지 초기화
+		});
+	</script>
