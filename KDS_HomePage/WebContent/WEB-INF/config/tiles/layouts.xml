@@ -5,20 +5,26 @@
 <tiles-definitions>
 
     <definition       name="default.mv"   template="/WEB-INF/config/tiles/layout/layout.jsp">
-		<put-attribute name="header"    	value="/WEB-INF/config/tiles/layout/header.jsp" />
-		<put-attribute name="top"    		value="/WEB-INF/config/tiles/layout/top.jsp" />
-		<put-attribute name="lnb"    		value="/WEB-INF/config/tiles/layout/lnb.jsp" />
+		<put-attribute name="header"    	value="/WEB-INF/config/tiles/layout/header.jsp"/>
+		<put-attribute name="top"    		value="/WEB-INF/config/tiles/layout/top.jsp"/>
+		<put-attribute name="lnb"    		value="/WEB-INF/config/tiles/layout/lnb.jsp"/>
 		<put-attribute name="snb"   	    value="" />
 		<put-attribute name="contents"   	value="" />
-		<put-attribute name="footer"    	value="/WEB-INF/config/tiles/layout/footer.jsp" />
+		<put-attribute name="footer"    	value="/WEB-INF/config/tiles/layout/footer.jsp"/>
+    </definition>
+    
+    <definition name="index.mv" 	   extends="default.mv">
+       <put-attribute name="top"      value="" />
+       <put-attribute name="lnb"      value="" />
+       <put-attribute name="contents" value="/WEB-INF/views/index.jsp"/>
     </definition>
     
     <definition name="*.mv" 			extends="default.mv">
-        <put-attribute name="contents" value="/WEB-INF/views/{1}.jsp" />
+        <put-attribute name="contents" value="/WEB-INF/views/{1}.jsp"/>
     </definition>
     <definition name="*/*.mv" 			extends="default.mv">
-        <put-attribute name="snb"      value="/WEB-INF/views/{1}/snb.jsp" />
-        <put-attribute name="contents" value="/WEB-INF/views/{1}/{2}.jsp" />
+        <put-attribute name="snb"      value="/WEB-INF/views/{1}/snb.jsp"/>
+        <put-attribute name="contents" value="/WEB-INF/views/{1}/{2}.jsp"/>
     </definition>
 
 </tiles-definitions>

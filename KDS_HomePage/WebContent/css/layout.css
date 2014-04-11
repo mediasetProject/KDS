@@ -6,65 +6,64 @@
   * author : Boh  
   */
   
+	body{}
+	
+	#b_wrap{
+		width:970px;position:absolute;left:50%; margin-left: -485px; background-color: #fff; margin-top:2px;
+	}
+	
+	
+	/*** 상단영역 ***/
+	
+	#t_container{
+	  	width:970px;
+	   margin:0 auto;
+	}
+	
+	#t_container .top_logo{
+		width:200px;
+		height:140px;
+		float:left;
+	}
+	
+	#t_container .top_imgArea{
+		width:770px;
+		height:140px;
+	    float:left;
+	    background-color:orange;
+	}
+	
+	
+	
+	
+	/*** 메뉴, 컨텐츠 영역 ***/
+	
+	#b_container{       /* 메뉴 영역, 컨텐츠 영역 Wrapper */
+	   width:970px;
+	   margin:0 auto;
+	}
+	
+	#m_lnb{             /* 대메뉴(lnb) */
+		width:200px;
+		height:auto;
+		float:left;
+		-webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+       border-radius: 3px;
+       border:1px soild #2C2B2B;
+	}
+	
+	#m_snb {           /* 서브메뉴(snb) */
+		width:770px;
+		float:left;
+	}
+	#m_contents{       /* 본문 */
+		width:770px;
+		float:left;
+	}
+	#m_contents:after{
+		clear:both;
+	}
 
 
-body{
-
-}
-
-
-#b_wrap{
-	width:970px;
-	position:absolute;
-	left:50%;
-	margin-left: -485px;
-	border-right: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
-	background-color: #fff
-}
-
-
-
-
-/*** 상단영역 ***/
-
-#t_container{
-  	width:970px;
-   margin:0 auto;
-}
-
-#t_container .top_logo{
-	width:200px;
-	height:112px;
-	float:left;
-}
-
-#t_container .top_imgArea{
-	width:770px;
-	height:112px;
-    float:left;
-	background-color:green;
-}
-
-
-
-/*** 메뉴, 컨텐츠 영역 ***/
-
-#b_container{       /* 메뉴 영역, 컨텐츠 영역 Wrapper */
-   width:970px;
-   margin:0 auto;
-}
-
-#m_lnb{             /* 메뉴(lnb) Wrapper */
-	width:200px;
-	float:left;
-}
-
-#m_container{      /* 컨텐츠 영역, 메뉴(snb) Wrapper */
-	width:770px;
-    float:left;
-}
-
-
-
-
+  

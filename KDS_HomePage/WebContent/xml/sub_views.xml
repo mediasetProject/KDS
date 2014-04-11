@@ -89,7 +89,7 @@
     <!--  고객지원 서브페이지 목록 -->
     <support>
        <sub_view>
-          <name>s1</name>
+          <name>notice</name>
           <value>1</value>
           <desc>공지사항</desc>
        </sub_view>

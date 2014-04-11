@@ -12,7 +12,7 @@
 
 /*** 메뉴(lnb) ***/
 
-ul.lnb{
+/* ul.lnb{
 	width: 200px; 
 	margin:0px;
 	padding:0px;
@@ -26,13 +26,13 @@ ul.lnb li{
     border-bottom: none;
 }
 ul.lnb li a{
-	display: block; /* 마우스 선택 영역을 잡기 위하여 변경 */
+	display: block; 마우스 선택 영역을 잡기 위하여 변경
 	padding:30px 40px;
 	text-decoration:none;
 	color: #666;
 	background:#fff;
 	background-image:url(/images/common/lnb_bool.gif);background-position:90% 50%;background-repeat:no-repeat;
-}
+} */
 
 /* ul.lnb li a:hover{   //lnb 마우스 오버 이벤트
 	color:#fff;
@@ -40,19 +40,19 @@ ul.lnb li a{
 	background-image:url(/images/common/lnb_bool_over.gif);background-position:90% 50%;background-repeat:no-repeat;
 } */
 
-ul.lnb li.last {
+/* ul.lnb li.last {
 	padding-left:0px;
 	border: 1px solid #aaa;
 	min-height:400px;
 	border-bottom:none;
-}
+} */
 
 
-ul.lnb li a.lnbClick{  /* 선택된 lnb는 lnbClick 클래스를 갖는다 */
+/* ul.lnb li a.lnbClick{  선택된 lnb는 lnbClick 클래스를 갖는다
 	color:#fff;
 	background:rgb(55,96,146);
 	background-image:url(/images/common/lnb_bool_over.gif);background-position:90% 50%;background-repeat:no-repeat;
-}
+} */
 
 
 
@@ -103,7 +103,7 @@ ul.s_navi a:hover{    //snb 마우스 오버 이벤트
 */
 
 ul.s_navi a.snbClick{  /* 선택된 snb는 snbClick 클래스를 갖는다 */
-	background:rgb(31,73,125);
+	background:#2C2B2B;/* rgb(31,73,125) */
 	color:#fff;
 	
 }

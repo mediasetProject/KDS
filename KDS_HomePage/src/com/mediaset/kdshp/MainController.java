@@ -46,9 +46,7 @@ public class MainController {
 		logger.info("SysInfo > os.version    : " + System.getProperty("os.version"));
 		logger.info("SysInfo > file.encoding : " + System.getProperty("file.encoding"));
 		
-		
 		HttpSession session = request.getSession();
-		
 		
 		// 서브페이지 리스트 세션 등록
 		String sub_views_XF = "http://"+request.getServerName()+":"+request.getServerPort()+"/xml/sub_views.xml";
@@ -58,44 +56,12 @@ public class MainController {
 		session.setAttribute("advert_views"   , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "advert"));
 		session.setAttribute("support_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "support"));
 
-		
-		
 		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "index";
+		return "index.mv";
 	}
 	
 			
-	/**
-	 * <p>KDS 홈페이지 다운로드 메뉴</p>
-	 * <br>
-	 * 
-	 * @param request HttpServletRequest - 요청 데이터
-	 */
-	@RequestMapping(value = "/download")
-	public String pdfDownload(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
-		logger.info("Msg> Disconnect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "/download/pdfview";
-	}		
-	
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////		
-	
-	@RequestMapping(value = "/sample")
-	public String sample(HttpServletRequest request) {
-		
-		logger.info("Msg> Connect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
-		
 
-		
-		logger.info("Msg> Disconnect(/download)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "sample2.mv";
-	}		
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
 
 

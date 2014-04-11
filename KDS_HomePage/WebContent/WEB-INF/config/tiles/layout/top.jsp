@@ -13,7 +13,7 @@
      <div id="t_container">
        <div class="top_logo">
             <a href="/" id="">
-                <img src="/images/common/kds_logo.png" alt="kds 의료정책방송" title="KDS(의료정책 방송)" />
+                <img src="/images/index/idx_logo.png"  height="140px" width="200px" alt="kds 의료정책방송" title="KDS(의료정책 방송)"> 
             </a>
        </div> 
        <div class="top_imgArea">

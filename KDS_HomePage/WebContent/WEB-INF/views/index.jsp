@@ -1,109 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>::: 의료정책방송(KDS) :::</title>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+	
+	<style>
+	 #m_contents{
+	   width:970px;
+	 }
+	</style>
+	
+   <link href="/js/plugins/video-js/video-js.min.css" rel="stylesheet" type="text/css">
 
-</head>
-<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<!-- Save for Web Slices (main.psd) -->
-<table id="Table_01" width="970" height="838" border="0" cellpadding="0" cellspacing="0" border-spacing="0">
- <tbody>
-	<tr>
-		<td colspan="3">
-			<img src="images/main_01.png" width="200" height="140" alt=""></td>
-		<td rowspan="13">
-			<img src="images/main_02.png" width="410" height="838" alt=""></td>
-		<td colspan="2" rowspan="4">
-			<img src="images/main_03.png" width="360" height="203" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="140" alt=""></td>
-	</tr>
-	<tr>
-		<td rowspan="8">
-			<img src="images/main_04.png" width="14" height="187" alt=""></td>
-		<td>
-			<img src="images/main_05.png" width="161" height="40" alt=""></td>
-		<td rowspan="8">
-			<img src="images/main_06.png" width="25" height="187" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="40" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_07.png" width="161" height="9" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="9" alt=""></td>
-	</tr>
-	<tr>
-		<td rowspan="2">
-			<img src="images/main_08.png" width="161" height="40" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="14" alt=""></td>
-	</tr>
-	<tr>
-		<td rowspan="7">
-			<img src="images/main_09.png" width="180" height="380" alt=""></td>
-		<td rowspan="6">
-			<img src="images/main_10.png" width="180" height="190" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="26" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_11.png" width="161" height="9" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="9" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_12.png" width="161" height="40" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="40" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_13.png" width="161" height="9" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="9" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_14.png" width="161" height="40" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="40" alt=""></td>
-	</tr>
-	<tr>
-		<td colspan="3" rowspan="3">
-			<img src="images/main_15.png" width="200" height="397" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="66" alt=""></td>
-	</tr>
-	<tr>
-		<td>
-			<img src="images/main_16.png" width="180" height="190" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="190" alt=""></td>
-	</tr>
-	<tr>
-		<td colspan="2" rowspan="2">
-			<img src="images/main_17.png" width="360" height="255" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="141" alt=""></td>
-	</tr>
-	<tr>
-		<td colspan="3">
-			<img src="images/main_18.png" width="200" height="114" alt=""></td>
-		<td>
-			<img src="images/spacer.gif" width="1" height="114" alt=""></td>
-	</tr>
-</tbody>	
-</table>
-<!-- End Save for Web Slices -->
+	
+	<div id="m_contents" >
+	
+	   <!-- index 본문 시작 -->
+		
+		<div class="idxLeftA">
+		  <div class="idxLogo">
+		    <a href="/" id="">
+                <img src="/images/index/idx_logo.png"  height="140px" width="200px" alt="kds 의료정책방송" title="KDS(의료정책 방송)"> 
+            </a>
+		  </div>
+		  <div class="idxMenu">
+		     <ul>
+		        <li>
+		            <a href="#" onClick="mNavi.hrefPost('/company'   ,'1')">
+	                 <img src="/images/index/menu_company.png" width="161" height="40" alt="KDS소개" title="KDS소개">
+	               </a>
+		        </li>
+		        <li>
+		            <a href="#" onClick="mNavi.hrefPost('/broadcast' ,'2')" >
+	                 <img src="/images/index/menu_broadcast.png" width="161" height="40" alt="방송정보" title="방송정보">
+	               </a>
+		        </li>
+		        <li>
+		            <a href="#" onClick="mNavi.hrefPost('/advert'    ,'3')">
+	                 <img src="/images/index/menu_advt.png" width="161" height="40" alt="광고안내" title="광고안내">
+	                </a>
+		        </li>
+		        <li>
+		            <a href="#" onClick="mNavi.hrefPost('/support'   ,'4')">
+	                 <img src="/images/index/menu_support.png" width="161" height="40" alt="고객지원" title="고객지원">
+	               </a>
+		        </li>
+		     </ul>
+		  </div>
+		  <div class="idxBlank"></div>
+		  <div class="idxContact">
+		    <img src="/images/index/idx_contact.png" width="200" height="114" alt="">
+		  </div>
+		</div>
+		<div class="idxCenterA">
+		  <img src="/images/index/idx_main_img.png" width="410"  alt="">
+		</div>
+		<div class="idxRightA">
+		  <div class="idxMovieContent">
+		     <!-- 홍보 동영상 시작 -->
+		     <video id="" class="video-js vjs-default-skin vjs-big-play-centered"  width="360" height="203"
+				          poster="/images/common/kds_logo.png"
+				          data-setup='{ "controls": true, "autoplay": false, "preload": "auto", "loop" : false }'>
+			    <source src="/assets/vedio/vedio_test.mp4" type='video/mp4' />
+			    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+			    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+			</video>	  
+		    <!-- 홍보 동영상 끝 -->
+		  </div>
+		  <div>
+			  <div class="" style="width:180px; height:380px;float:left">
+			    <img src="/images/index/idx_setup.png"width="180" height="380" alt="">
+			  </div>
+			  <div class="" style="width:180px; height:190px;float:left">
+			     <a href="/assets/pdf/kdsIntroduction.pdf" target="_blank">
+			      <img src="/images/index/idx_company_itc.png" width="180" height="190" alt="">
+			     </a> 
+			  </div>
+			  <div class="" style="width:180px; height:190px;float:left">
+			     <img src="/images/index/idx_adv_req.png" width="180" height="190" alt="">
+			  </div>
+			  <div class="" style="clear:both"></div>
+		  </div>
+		  <div class="idxSponor">
+		     <img src="/images/index/main_17.png" width="360" height="255" alt="">
+		  </div>	  
+		</div>
+		<div style="clear:both"></div>
+	
+	  <!-- index 본문 끝-->
+	  
+	</div> <!-- END #m_contents -->		
+	
+		
+		
+<!-- 
+    ====================================================================================================================
+    =============================================== 스크립트 영역  ======================================================
+    ====================================================================================================================
+ -->
 
-<a href="/sample">샘플</a>
-</body>
+<!-- 추가 플러그인 -->
+  <script src="/js/plugins/video-js/video.js"></script>
 
-</html>
+<!-- 해당 페이지 스크립트-->
+  <script src="/js/views/index.js"></script>
+
+
 

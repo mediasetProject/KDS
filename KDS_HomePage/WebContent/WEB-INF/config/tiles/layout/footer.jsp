@@ -17,17 +17,8 @@
 				   $("#hrefPostForm").attr({action:url}).submit();
 			 },
 			 
-			 openPDF : function(obj){
-				 
-					$(this).attr("target","_blank");
-					window.open("/download");
-					return false;
-			 }
 		}
 	</script>
-
-
-
 
 
 

@@ -3,41 +3,16 @@
 <div id="m_contents" >
   <div id="main-container" class="main-container">          
      <div class="main-container-inner">    
-         <div class="main-content">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-
-							<li>
-								<a href="#">UI Elements</a>
-							</li>
-							<li class="active">Elements</li>
-						</ul><!-- .breadcrumb -->
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-									<i class="icon-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- #nav-search -->
-					</div>
-
-					<div class="page-content">
+         <div class="main-content">        
+             <div class="page-content">
+				  <!-- 본문 내용 시작 -->
+				
 						<div class="page-header">
 							<h1>
-								UI Elements
+								Inbox
 								<small>
 									<i class="icon-double-angle-right"></i>
-									Common UI Features &amp; Elements
+									Mailbox with some customizations as described in docs
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -47,795 +22,931 @@
 								<!-- PAGE CONTENT BEGINS -->
 
 								<div class="row">
-									<div class="col-sm-6">
+									<div class="col-xs-12">
 										<div class="tabbable">
-											<ul class="nav nav-tabs" id="myTab">
+											<ul id="inbox-tabs" class="inbox-tabs nav nav-tabs padding-16 tab-size-bigger tab-space-1">
+												<li class="li-new-mail pull-right">
+													<a data-toggle="tab" href="#write" data-target="write" class="btn-new-mail">
+														<span class="btn bt1n-small btn-purple no-border">
+															<i class=" icon-envelope bigger-130"></i>
+															<span class="bigger-110">Write Mail</span>
+														</span>
+													</a>
+												</li><!-- ./li-new-mail -->
+
 												<li class="active">
-													<a data-toggle="tab" href="#home">
-														<i class="green icon-home bigger-110"></i>
-														Home
+													<a data-toggle="tab" href="#inbox" data-target="inbox">
+														<i class="blue icon-inbox bigger-130"></i>
+														<span class="bigger-110">Inbox</span>
 													</a>
 												</li>
 
 												<li>
-													<a data-toggle="tab" href="#profile">
-														Messages
-														<span class="badge badge-danger">4</span>
+													<a data-toggle="tab" href="#sent" data-target="sent">
+														<i class="orange icon-location-arrow bigger-130 "></i>
+														<span class="bigger-110">Sent</span>
+													</a>
+												</li>
+
+												<li>
+													<a data-toggle="tab" href="#draft" data-target="draft">
+														<i class="green icon-pencil bigger-130"></i>
+														<span class="bigger-110">Draft</span>
 													</a>
 												</li>
 
 												<li class="dropdown">
 													<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-														Dropdown &nbsp;
-														<i class="icon-caret-down bigger-110 width-auto"></i>
-													</a>
+														<i class="pink icon-tags bigger-130"></i>
 
-													<ul class="dropdown-menu dropdown-info">
-														<li>
-															<a data-toggle="tab" href="#dropdown1">@fat</a>
-														</li>
-
-														<li>
-															<a data-toggle="tab" href="#dropdown2">@mdo</a>
-														</li>
-													</ul>
-												</li>
-											</ul>
-
-											<div class="tab-content">
-												<div id="home" class="tab-pane in active">
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-
-												<div id="profile" class="tab-pane">
-													<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-												</div>
-
-												<div id="dropdown1" class="tab-pane">
-													<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-												</div>
-
-												<div id="dropdown2" class="tab-pane">
-													<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-
-									<div class="vspace-xs-6"></div>
-
-									<div class="col-sm-6">
-										<div class="tabbable tabs-below">
-											<div class="tab-content">
-												<div id="home2" class="tab-pane in active">
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-
-												<div id="profile2" class="tab-pane">
-													<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-												</div>
-
-												<div id="dropdown12" class="tab-pane">
-													<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-												</div>
-											</div>
-
-											<ul class="nav nav-tabs" id="myTab2">
-												<li class="active">
-													<a data-toggle="tab" href="#home2">Home</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#profile2">Profile</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#dropdown12">More</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div><!-- /row -->
-
-								<div class="space"></div>
-
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="tabbable tabs-left">
-											<ul class="nav nav-tabs" id="myTab3">
-												<li class="active">
-													<a data-toggle="tab" href="#home3">
-														<i class="pink icon-dashboard bigger-110"></i>
-														Home
-													</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#profile3">
-														<i class="blue icon-user bigger-110"></i>
-														Profile
-													</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#dropdown13">
-														<i class="icon-rocket"></i>
-														More
-													</a>
-												</li>
-											</ul>
-
-											<div class="tab-content">
-												<div id="home3" class="tab-pane in active">
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-
-												<div id="profile3" class="tab-pane">
-													<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-
-												<div id="dropdown13" class="tab-pane">
-													<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-
-									<div class="vspace-sm-6"></div>
-
-									<div class="col-sm-6">
-										<div class="tabbable">
-											<ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
-												<li class="active">
-													<a data-toggle="tab" href="#home4">Home</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#profile4">Profile</a>
-												</li>
-
-												<li>
-													<a data-toggle="tab" href="#dropdown14">More</a>
-												</li>
-											</ul>
-
-											<div class="tab-content">
-												<div id="home4" class="tab-pane in active">
-													<p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
-												</div>
-
-												<div id="profile4" class="tab-pane">
-													<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
-												</div>
-
-												<div id="dropdown14" class="tab-pane">
-													<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-								</div><!-- /row -->
-
-								<div class="hr hr-double hr-dotted hr18"></div>
-
-								<div class="row">
-									<div class="col-sm-6">
-										<h3 class="row header smaller lighter blue">
-											<span class="col-xs-6"> Accordion </span><!-- /span -->
-
-											<span class="col-xs-6">
-												<span class="pull-right inline">
-													<span class="grey smaller-80 bolder">style:</span>
-
-													<span class="btn-toolbar inline middle no-margin">
-														<span id="accordion-style" data-toggle="buttons" class="btn-group no-margin">
-															<label class="btn btn-xs btn-yellow active">
-																<input type="radio" value="1">
-																1
-															</label>
-
-															<label class="btn btn-xs btn-yellow">
-																<input type="radio" value="2">
-																2
-															</label>
+														<span class="bigger-110">
+															Tags
+															<i class="icon-caret-down"></i>
 														</span>
-													</span>
-												</span>
-											</span><!-- /span -->
-										</h3>
-
-										<div id="accordion" class="accordion-style1 panel-group">
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-															<i class="icon-angle-down bigger-110" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
-															&nbsp;Group Item #1
-														</a>
-													</h4>
-												</div>
-
-												<div class="panel-collapse collapse in" id="collapseOne">
-													<div class="panel-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-													</div>
-												</div>
-											</div>
-
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-															<i class="icon-angle-right bigger-110" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
-															&nbsp;Group Item #2
-														</a>
-													</h4>
-												</div>
-
-												<div class="panel-collapse collapse" id="collapseTwo">
-													<div class="panel-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-													</div>
-												</div>
-											</div>
-
-											<div class="panel panel-default">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-															<i class="icon-angle-right bigger-110" data-icon-hide="icon-angle-down" data-icon-show="icon-angle-right"></i>
-															&nbsp;Group Item #3
-														</a>
-													</h4>
-												</div>
-
-												<div class="panel-collapse collapse" id="collapseThree">
-													<div class="panel-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-
-									<div class="col-sm-6">
-										<h3 class="header smaller lighter green">Progress Bar</h3>
-
-										<div class="row">
-											<div class="col-xs-8">
-												<div class="progress" data-percent="66%">
-													<div class="progress-bar" style="width:66%;"></div>
-												</div>
-
-												<div class="progress progress-striped" data-percent="25%">
-													<div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-												</div>
-
-												<div class="progress progress-small progress-striped active">
-													<div class="progress-bar progress-bar-warning" style="width: 40%;"></div>
-												</div>
-
-												<div class="progress progress-mini">
-													<div class="progress-bar progress-danger" style="width: 35%;"></div>
-												</div>
-
-												<div class="progress">
-													<div class="progress-bar progress-bar-success" style="width: 35%;"></div>
-
-													<div class="progress-bar progress-bar-warning" style="width: 20%;"></div>
-
-													<div class="progress-bar progress-bar-danger" style="width: 10%;"></div>
-												</div>
-
-												<div class="progress progress-striped">
-													<div class="progress-bar progress-bar-purple" style="width: 65%"></div>
-												</div>
-
-												<div class="progress progress-striped">
-													<div class="progress-bar progress-bar-pink" style="width: 40%"></div>
-												</div>
-
-												<div class="progress progress-striped active">
-													<div class="progress-bar progress-bar-yellow" style="width: 60%"></div>
-												</div>
-
-												<div class="progress progress-striped">
-													<div class="progress-bar progress-bar-inverse" style="width: 80%"></div>
-												</div>
-											</div><!-- /span -->
-
-											<div class="col-xs-4 center">
-												<div class="easy-pie-chart percentage easyPieChart" data-percent="20" data-color="#D15B47" style="width: 75px; height: 75px; line-height: 75px; color: rgb(209, 91, 71);">
-													<span class="percent">20</span>%
-												<canvas width="75" height="75"></canvas></div>
-
-												<hr>
-												<div class="easy-pie-chart percentage easyPieChart" data-percent="55" data-color="#87CEEB" style="width: 75px; height: 75px; line-height: 75px; color: rgb(135, 206, 235);">
-													<span class="percent">55</span>%
-												<canvas width="75" height="75"></canvas></div>
-
-												<hr>
-												<div class="easy-pie-chart percentage easyPieChart" data-percent="90" data-color="#87B87F" style="width: 75px; height: 75px; line-height: 75px; color: rgb(135, 184, 127);">
-													<span class="percent">90</span>%
-												<canvas width="75" height="75"></canvas></div>
-											</div><!-- /span -->
-										</div><!-- /row-fluid -->
-									</div><!-- /span -->
-								</div><!-- /row -->
-
-								<hr>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="widget-box">
-											<div class="widget-header">
-												<h4 class="smaller">
-													Tooltips
-													<small>different directions and colors</small>
-												</h4>
-											</div>
-
-											<div class="widget-body">
-												<div class="widget-main">
-													<p class="muted">
-														Tight pants next level keffiyeh
-														<a title="" data-rel="tooltip" href="#" data-original-title="Default tooltip">you probably</a>
-														haven't heard of them. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel
-														<a title="" data-rel="tooltip" href="#" data-original-title="Another tooltip">have a</a>
-														terry richardson vinyl chambray. A really ironic artisan
-														<a data-rel="tooltip" href="#" data-original-title="Another one here too">whatever</a>
-														keytar, scenester farm-to-table banksy Austin
-														<a title="" data-rel="tooltip" href="#" data-original-title="The last tip!">twitter</a>
-														handle.
-													</p>
-
-													<hr>
-													<p>
-														<span class="btn btn-sm" data-rel="tooltip" title="" data-original-title="Default">Default</span>
-														<span class="btn btn-warning btn-sm tooltip-warning" data-rel="tooltip" data-placement="left" title="" data-original-title="Left Warning">Left</span>
-														<span class="btn btn-success btn-sm tooltip-success" data-rel="tooltip" data-placement="right" title="" data-original-title="Right Success">Right</span>
-														<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" data-placement="top" title="" data-original-title="Top Danger">Top</span>
-														<span class="btn btn-info btn-sm tooltip-info" data-rel="tooltip" data-placement="bottom" title="" data-original-title="Bottm Info">Bottom</span>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-
-									<div class="col-sm-6">
-										<div class="widget-box">
-											<div class="widget-header">
-												<h4 class="smaller">Popovers</h4>
-											</div>
-
-											<div class="widget-body">
-												<div class="widget-main">
-													<p>
-														<span class="btn btn-sm" data-rel="popover" title="" data-content="Heads up! This alert needs your attention, but it's not super important." data-original-title="Default">Default</span>
-														<span class="btn btn-success btn-sm tooltip-success" data-rel="popover" data-placement="right" title="" data-content="Well done! You successfully read this important alert message." data-original-title="&lt;i class='icon-ok green'&gt;&lt;/i&gt; Right Success">Right</span>
-														<span class="btn btn-warning btn-sm tooltip-warning" data-rel="popover" data-placement="left" title="" data-content="Warning! Best check yo self, you're not looking too good." data-original-title="&lt;i class='icon-warning-sign orange'&gt;&lt;/i&gt; Left Warning">Left</span>
-													</p>
-
-													<p>
-														<span class="btn btn-danger btn-sm tooltip-error" data-rel="popover" data-placement="top" data-original-title="&lt;i class='icon-bolt red'&gt;&lt;/i&gt; Top Danger" data-content="Oh snap! Change a few things up and try submitting again.">Top</span>
-														<span class="btn btn-info btn-sm tooltip-info" data-rel="popover" data-placement="bottom" title="" data-content=" Heads up! This alert needs your attention, but it's not super important." data-original-title="Some Info">Bottom</span>
-														<span class="btn btn-inverse btn-sm popover-notitle" data-rel="popover" data-placement="bottom" data-content="Popover without a title!" data-original-title="" title="">No Title</span>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div><!-- /span -->
-								</div><!-- /row -->
-
-								<hr>
-								<div class="row">
-									<div class="col-sm-6">
-										<h3 class="header smaller lighter green">
-											<i class="icon-bullhorn"></i>
-											Alerts
-										</h3>
-
-										<div class="alert alert-danger">
-											<button type="button" class="close" data-dismiss="alert">
-												<i class="icon-remove"></i>
-											</button>
-
-											<strong>
-												<i class="icon-remove"></i>
-												Oh snap!
-											</strong>
-
-											Change a few things up and try submitting again.
-											<br>
-										</div>
-
-										<div class="alert alert-warning">
-											<button type="button" class="close" data-dismiss="alert">
-												<i class="icon-remove"></i>
-											</button>
-											<strong>Warning!</strong>
-
-											Best check yo self, you're not looking too good.
-											<br>
-										</div>
-
-										<div class="alert alert-block alert-success">
-											<button type="button" class="close" data-dismiss="alert">
-												<i class="icon-remove"></i>
-											</button>
-
-											<p>
-												<strong>
-													<i class="icon-ok"></i>
-													Well done!
-												</strong>
-												You successfully read this important alert message.
-											</p>
-
-											<p>
-												<button class="btn btn-sm btn-success">Do This</button>
-												<button class="btn btn-sm">Or This One</button>
-											</p>
-										</div>
-
-										<div class="alert alert-info">
-											<button type="button" class="close" data-dismiss="alert">
-												<i class="icon-remove"></i>
-											</button>
-											<strong>Heads up!</strong>
-
-											This alert needs your attention, but it's not super important.
-											<br>
-										</div>
-									</div><!-- /span -->
-
-									<div class="col-sm-6">
-										<h3 class="row header smaller lighter orange">
-											<span class="col-sm-8">
-												<i class="icon-bell-alt"></i>
-												Gritter Notifications
-											</span><!-- /span -->
-
-											<span class="col-sm-4">
-												<label class="pull-right inline">
-													<small class="muted">Dark:</small>
-
-													<input id="gritter-light" checked="" type="checkbox" class="ace ace-switch ace-switch-5">
-													<span class="lbl"></span>
-												</label>
-											</span><!-- /span -->
-										</h3>
-
-										<p>
-											<i>Click to see</i>
-										</p>
-
-										<p>
-											<button class="btn" id="gritter-regular">Regular</button>
-											<button class="btn btn-info" id="gritter-sticky">Sticky</button>
-											<button class="btn btn-success" id="gritter-without-image">Without Image</button>
-										</p>
-
-										<p>
-											<button class="btn btn-danger" id="gritter-error">Error</button>
-											<button class="btn btn-warning" id="gritter-max3">Max 3</button>
-											<button class="btn btn-primary" id="gritter-center">Center</button>
-											<button class="btn btn-inverse" id="gritter-remove">Remove</button>
-										</p>
-									</div><!-- /span -->
-								</div><!-- /row -->
-
-								<hr>
-								<div class="row">
-									<div class="col-sm-6">
-										<div>
-											<h3 class="header smaller lighter purple">
-												Bootstrap Modals
-												<small>(Bootbox.js)</small>
-											</h3>
-
-											<p>
-												<button class="btn" id="bootbox-regular">Regular Dialog</button>
-												<button class="btn btn-info" id="bootbox-confirm">Confirm</button>
-												<button class="btn btn-success" id="bootbox-options">More Options</button>
-											</p>
-										</div><!-- /row -->
-
-										<div class="space-24"></div>
-
-										<div class="row">
-											<div class="col-xs-12">
-												<h3 class="header smaller lighter grey">
-													<i class="icon-spinner icon-spin orange bigger-125"></i>
-													Imageless Spinner
-													<small>(spin.js)</small>
-												</h3>
-											</div>
-
-											<div class="col-xs-12">
-												<i>Change a value to begin</i>
-
-												<div class="pull-right center spinner-preview" id="spinner-preview"></div>
-
-												<form class="form-horizontal" id="spinner-opts">
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Lines:</small>
-
-														<input class="hidden" type="text" name="lines" data-min="5" data-max="16" data-step="2" value="12" style="display: none;"><span class="ui-slider-small inline ui-slider- ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 72.72727272727273%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 72.72727272727273%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Length:</small>
-
-														<input class="hidden" type="text" name="length" data-min="0" data-max="30" value="7" style="display: none;"><span class="ui-slider-small inline ui-slider-green ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 23.333333333333332%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 23.333333333333332%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Width:</small>
-
-														<input class="hidden" type="text" name="width" data-min="2" data-max="20" value="4" style="display: none;"><span class="ui-slider-small inline ui-slider-red ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 11.11111111111111%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 11.11111111111111%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Radius:</small>
-
-														<input class="hidden" type="text" name="radius" data-min="0" data-max="40" value="10" style="display: none;"><span class="ui-slider-small inline ui-slider-purple ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 25%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 25%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Corners:</small>
-
-														<input class="hidden" type="text" name="corners" data-min="0" data-max="1" data-step="0.1" value="1" style="display: none;"><span class="ui-slider-small inline ui-slider-orange ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 100%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Rotate:</small>
-
-														<input class="hidden" type="text" name="rotate" data-min="0" data-max="90" value="0" style="display: none;"><span class="ui-slider-small inline ui-slider-dark ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Trail:</small>
-
-														<input class="hidden" type="text" name="trail" data-min="10" data-max="100" value="60" style="display: none;"><span class="ui-slider-small inline ui-slider- ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 55.55555555555556%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 55.55555555555556%;"></a></span>
-													</label>
-
-													<label>
-														<small class="lighter" style="display: inline-block; width: 60px;">Speed:</small>
-
-														<input class="hidden" type="text" name="speed" data-min="0.5" data-max="2.2" data-step="0.1" value="1" style="display: none;"><span class="ui-slider-small inline ui-slider-green ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false" style="width: 125px;"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 50%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 50%;"></a></span>
-													</label>
-												</form>
-											</div><!-- /row -->
-										</div><!-- /row -->
-									</div><!-- /span -->
-
-									<div class="col-sm-6">
-										<h3 class="header smaller lighter red">Bootstrap Wells</h3>
-
-										<div class="well">
-											<h4 class="green smaller lighter">Normal Well</h4>
-											Use the well as a simple effect on an element to give it an inset effect.
-										</div>
-
-										<div class="well well-lg">
-											<h4 class="blue">Large Well</h4>
-											Control padding and rounded corners with two optional modifier classes.
-										</div>
-										<div class="well well-sm"> This is a small well </div>
-									</div><!-- /span -->
-								</div><!-- /row -->
-
-								<div class="row">
-									<div class="col-sm-6">
-										<h3 class="header smaller lighter green">Dropdowns</h3>
-
-										<div class="dropdown dropdown-preview">
-											<ul class="dropdown-menu">
-												<li>
-													<a href="#" tabindex="-1">Action</a>
-												</li>
-
-												<li>
-													<a href="#" tabindex="-1">Another action</a>
-												</li>
-
-												<li>
-													<a href="#" tabindex="-1">Something else here</a>
-												</li>
-
-												<li class="divider"></li>
-
-												<li>
-													<a href="#" tabindex="-1">Separated link</a>
-												</li>
-											</ul>
-										</div>
-
-										<div class="dropdown dropdown-preview">
-											<ul class="dropdown-menu dropdown-danger">
-												<li>
-													<a href="#" tabindex="-1">Action</a>
-												</li>
-
-												<li>
-													<a href="#" tabindex="-1">Another action</a>
-												</li>
-
-												<li>
-													<a href="#" tabindex="-1">Something else here</a>
-												</li>
-
-												<li class="divider"></li>
-
-												<li class="dropdown-hover">
-													<a href="#" tabindex="-1" class="clearfix">
-														<span class="pull-left">More options</span>
-
-														<i class="icon-caret-right pull-right"></i>
 													</a>
 
-													<ul class="dropdown-menu dropdown-danger  pull-right">
+													<ul class="dropdown-menu dropdown-light-blue dropdown-125">
 														<li>
-															<a href="#" tabindex="-1">Second level link</a>
+															<a data-toggle="tab" href="#tag-1" data-target="tag-1">
+																<span class="mail-tag badge badge-pink"></span>
+																<span class="pink">Tag#1</span>
+															</a>
 														</li>
 
 														<li>
-															<a href="#" tabindex="-1">Second level link</a>
+															<a data-toggle="tab" href="#tag-family" data-target="tag-family">
+																<span class="mail-tag badge badge-success"></span>
+																<span class="green">Family</span>
+															</a>
 														</li>
 
 														<li>
-															<a href="#" tabindex="-1">Second level link</a>
+															<a data-toggle="tab" href="#tag-friends" data-target="tag-friends">
+																<span class="mail-tag badge badge-info"></span>
+																<span class="blue">Friends</span>
+															</a>
 														</li>
 
 														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
+															<a data-toggle="tab" href="#tag-work" data-target="tag-work">
+																<span class="mail-tag badge badge-grey"></span>
+																<span class="grey">Work</span>
+															</a>
 														</li>
 													</ul>
-												</li>
+												</li><!-- /.dropdown -->
 											</ul>
+
+											<div class="tab-content no-border no-padding">
+												<div class="tab-pane in active">
+													<div class="message-container">
+														<div id="id-message-list-navbar" class="message-navbar align-center clearfix">
+															<div class="message-bar">
+																<div class="message-infobar" id="id-message-infobar">
+																	<span class="blue bigger-150">Inbox</span>
+																	<span class="grey bigger-110">(2 unread messages)</span>
+																</div>
+
+																<div class="message-toolbar hide">
+																	<div class="inline position-relative align-left">
+																		<a href="#" class="btn-message btn btn-xs dropdown-toggle" data-toggle="dropdown">
+																			<span class="bigger-110">Action</span>
+
+																			<i class="icon-caret-down icon-on-right"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+																			<li>
+																				<a href="#">
+																					<i class="icon-mail-reply blue"></i>
+																					&nbsp; Reply
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-mail-forward green"></i>
+																					&nbsp; Forward
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-folder-open orange"></i>
+																					&nbsp; Archive
+																				</a>
+																			</li>
+
+																			<li class="divider"></li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-eye-open blue"></i>
+																					&nbsp; Mark as read
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-eye-close green"></i>
+																					&nbsp; Mark unread
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-flag-alt red"></i>
+																					&nbsp; Flag
+																				</a>
+																			</li>
+
+																			<li class="divider"></li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-trash red bigger-110"></i>
+																					&nbsp; Delete
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="inline position-relative align-left">
+																		<a href="#" class="btn-message btn btn-xs dropdown-toggle" data-toggle="dropdown">
+																			<i class="icon-folder-close-alt bigger-110"></i>
+																			<span class="bigger-110">Move to</span>
+
+																			<i class="icon-caret-down icon-on-right"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop pink2"></i>
+																					&nbsp; Tag#1
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop blue"></i>
+																					&nbsp; Family
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop green"></i>
+																					&nbsp; Friends
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop grey"></i>
+																					&nbsp; Work
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<a href="#" class="btn btn-xs btn-message">
+																		<i class="icon-trash bigger-125"></i>
+																		<span class="bigger-110">Delete</span>
+																	</a>
+																</div>
+															</div>
+
+															<div>
+																<div class="messagebar-item-left">
+																	<label class="inline middle">
+																		<input type="checkbox" id="id-toggle-all" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	&nbsp;
+																	<div class="inline position-relative">
+																		<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+																			<i class="icon-caret-down bigger-125 middle"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter dropdown-100">
+																			<li>
+																				<a id="id-select-message-all" href="#">All</a>
+																			</li>
+
+																			<li>
+																				<a id="id-select-message-none" href="#">None</a>
+																			</li>
+
+																			<li class="divider"></li>
+
+																			<li>
+																				<a id="id-select-message-unread" href="#">Unread</a>
+																			</li>
+
+																			<li>
+																				<a id="id-select-message-read" href="#">Read</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+
+																<div class="messagebar-item-right">
+																	<div class="inline position-relative">
+																		<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+																			Sort &nbsp;
+																			<i class="icon-caret-down bigger-125"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter pull-right dropdown-100">
+																			<li>
+																				<a href="#">
+																					<i class="icon-ok green"></i>
+																					Date
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-ok invisible"></i>
+																					From
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-ok invisible"></i>
+																					Subject
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+
+																<div class="nav-search minimized">
+																	<form class="form-search">
+																		<span class="input-icon">
+																			<input type="text" autocomplete="off" class="input-small nav-search-input" placeholder="Search inbox ...">
+																			<i class="icon-search nav-search-icon"></i>
+																		</span>
+																	</form>
+																</div>
+															</div>
+														</div>
+
+														<div id="id-message-item-navbar" class="hide message-navbar align-center clearfix">
+															<div class="message-bar">
+																<div class="message-toolbar">
+																	<div class="inline position-relative align-left">
+																		<a href="#" class="btn-message btn btn-xs dropdown-toggle" data-toggle="dropdown">
+																			<span class="bigger-110">Action</span>
+
+																			<i class="icon-caret-down icon-on-right"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+																			<li>
+																				<a href="#">
+																					<i class="icon-mail-reply blue"></i>
+																					&nbsp; Reply
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-mail-forward green"></i>
+																					&nbsp; Forward
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-folder-open orange"></i>
+																					&nbsp; Archive
+																				</a>
+																			</li>
+
+																			<li class="divider"></li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-eye-open blue"></i>
+																					&nbsp; Mark as read
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-eye-close green"></i>
+																					&nbsp; Mark unread
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-flag-alt red"></i>
+																					&nbsp; Flag
+																				</a>
+																			</li>
+
+																			<li class="divider"></li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-trash red bigger-110"></i>
+																					&nbsp; Delete
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<div class="inline position-relative align-left">
+																		<a href="#" class="btn-message btn btn-xs dropdown-toggle" data-toggle="dropdown">
+																			<i class="icon-folder-close-alt bigger-110"></i>
+																			<span class="bigger-110">Move to</span>
+
+																			<i class="icon-caret-down icon-on-right"></i>
+																		</a>
+
+																		<ul class="dropdown-menu dropdown-lighter dropdown-caret dropdown-125">
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop pink2"></i>
+																					&nbsp; Tag#1
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop blue"></i>
+																					&nbsp; Family
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop green"></i>
+																					&nbsp; Friends
+																				</a>
+																			</li>
+
+																			<li>
+																				<a href="#">
+																					<i class="icon-stop grey"></i>
+																					&nbsp; Work
+																				</a>
+																			</li>
+																		</ul>
+																	</div>
+
+																	<a href="#" class="btn btn-xs btn-message">
+																		<i class="icon-trash bigger-125"></i>
+																		<span class="bigger-110">Delete</span>
+																	</a>
+																</div>
+															</div>
+
+															<div>
+																<div class="messagebar-item-left">
+																	<a href="#" class="btn-back-message-list">
+																		<i class="icon-arrow-left blue bigger-110 middle"></i>
+																		<b class="bigger-110 middle">Back</b>
+																	</a>
+																</div>
+
+																<div class="messagebar-item-right">
+																	<i class="icon-time bigger-110 orange middle"></i>
+																	<span class="time grey">Today, 7:15 pm</span>
+																</div>
+															</div>
+														</div>
+
+														<div id="id-message-new-navbar" class="hide message-navbar align-center clearfix">
+															<div class="message-bar">
+																<div class="message-toolbar">
+																	<a href="#" class="btn btn-xs btn-message">
+																		<i class="icon-save bigger-125"></i>
+																		<span class="bigger-110">Save Draft</span>
+																	</a>
+
+																	<a href="#" class="btn btn-xs btn-message">
+																		<i class="icon-remove bigger-125"></i>
+																		<span class="bigger-110">Discard</span>
+																	</a>
+																</div>
+															</div>
+
+															<div class="message-item-bar">
+																<div class="messagebar-item-left">
+																	<a href="#" class="btn-back-message-list no-hover-underline">
+																		<i class="icon-arrow-left blue bigger-110 middle"></i>
+																		<b class="middle bigger-110">Back</b>
+																	</a>
+																</div>
+
+																<div class="messagebar-item-right">
+																	<span class="inline btn-send-message">
+																		<button type="button" class="btn btn-sm btn-primary no-border">
+																			<span class="bigger-110">Send</span>
+
+																			<i class="icon-arrow-right icon-on-right"></i>
+																		</button>
+																	</span>
+																</div>
+															</div>
+														</div>
+
+														<div class="message-list-container">
+															<div class="message-list" id="message-list">
+																<div class="message-item message-unread">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star orange2"></i>
+																	<span class="sender" title="Alex John Red Smith">Alex John Red Smith </span>
+																	<span class="time">1:33 pm</span>
+
+																	<span class="summary">
+																		<span class="text">
+																			Click to open this message
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item message-unread">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+
+																	<span class="sender" title="John Doe">
+																		John Doe
+																		<span class="light-grey">(4)</span>
+																	</span>
+																	<span class="time">7:15 pm</span>
+
+																	<span class="attachment">
+																		<i class="icon-paper-clip"></i>
+																	</span>
+
+																	<span class="summary">
+																		<span class="badge badge-pink mail-tag"></span>
+																		<span class="text">
+																			Clik to open this message right here
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Philip Markov">Philip Markov </span>
+																	<span class="time">10:15 am</span>
+
+																	<span class="attachment">
+																		<i class="icon-paper-clip"></i>
+																	</span>
+
+																	<span class="summary">
+																		<span class="message-flags">
+																			<i class="icon-reply light-grey"></i>
+																		</span>
+																		<span class="text">
+																			Photo booth beard raw denim letterpress vegan
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star orange2"></i>
+																	<span class="sender" title="Sabrina">Sabrina </span>
+																	<span class="time">Yesterday</span>
+
+																	<span class="summary">
+																		<span class="text">
+																			Nullam quis risus eget urna mollis ornare
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Philip Markov">Philip Markov </span>
+																	<span class="time">Yesterday</span>
+
+																	<span class="attachment">
+																		<i class="icon-paper-clip"></i>
+																	</span>
+
+																	<span class="summary">
+																		<span class="badge badge-success mail-tag"></span>
+																		<span class="text">
+																			Vestibulum id ligula porta felis euismod
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Doctor Gomenz">Doctor Gomenz </span>
+																	<span class="time">April 5</span>
+
+																	<span class="summary">
+																		<span class="text">
+																			Vim te vivendo convenire, summo fuisset
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Robin Hood">Robin Hood </span>
+																	<span class="time">April 4</span>
+
+																	<span class="summary">
+																		<span class="message-flags">
+																			<i class="icon-reply light-grey"></i>
+																		</span>
+																		<span class="text">
+																			No eos veniam equidem mentitum, his porro
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Google Inc">Google Inc </span>
+																	<span class="time">April 3</span>
+
+																	<span class="summary">
+																		<span class="badge badge-grey mail-tag"></span>
+																		<span class="text">
+																			Convallis facilisis euismod urna sodales
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Shrek">Shrek </span>
+																	<span class="time">March 28</span>
+
+																	<span class="attachment">
+																		<i class="icon-paper-clip"></i>
+																	</span>
+
+																	<span class="summary">
+																		<span class="message-flags">
+																			<i class="icon-flag icon-flip-horizontal light-grey"></i>
+																		</span>
+																		<span class="text">
+																			Photo booth beard raw denim letterpress vegan messenger
+																		</span>
+																	</span>
+																</div>
+
+																<div class="message-item">
+																	<label class="inline">
+																		<input type="checkbox" class="ace">
+																		<span class="lbl"></span>
+																	</label>
+
+																	<i class="message-star icon-star-empty light-grey"></i>
+																	<span class="sender" title="Yahoo!">Yahoo! </span>
+																	<span class="time">March 27</span>
+
+																	<span class="summary">
+																		<span class="message-flags">
+																			<i class="icon-mail-forward light-grey"></i>
+																		</span>
+																		<span class="text">
+																			Tofu biodiesel williamsburg marfa, four loko mcsweeney
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div><!-- /.message-list-container -->
+
+														<div class="message-footer clearfix">
+															<div class="pull-left"> 151 messages total </div>
+
+															<div class="pull-right">
+																<div class="inline middle"> page 1 of 16 </div>
+
+																&nbsp; &nbsp;
+																<ul class="pagination middle">
+																	<li class="disabled">
+																		<span>
+																			<i class="icon-step-backward middle"></i>
+																		</span>
+																	</li>
+
+																	<li class="disabled">
+																		<span>
+																			<i class="icon-caret-left bigger-140 middle"></i>
+																		</span>
+																	</li>
+
+																	<li>
+																		<span>
+																			<input value="1" maxlength="3" type="text">
+																		</span>
+																	</li>
+
+																	<li>
+																		<a href="#">
+																			<i class="icon-caret-right bigger-140 middle"></i>
+																		</a>
+																	</li>
+
+																	<li>
+																		<a href="#">
+																			<i class="icon-step-forward middle"></i>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+
+														<div class="hide message-footer message-footer-style2 clearfix">
+															<div class="pull-left"> simpler footer </div>
+
+															<div class="pull-right">
+																<div class="inline middle"> message 1 of 151 </div>
+
+																&nbsp; &nbsp;
+																<ul class="pagination middle">
+																	<li class="disabled">
+																		<span>
+																			<i class="icon-angle-left bigger-150"></i>
+																		</span>
+																	</li>
+
+																	<li>
+																		<a href="#">
+																			<i class="icon-angle-right bigger-150"></i>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div><!-- /.message-container -->
+												</div><!-- /.tab-pane -->
+											</div><!-- /.tab-content -->
+										</div><!-- /.tabbable -->
+									</div><!-- /.col -->
+								</div><!-- /.row -->
+
+								<form id="id-message-form" class="hide form-horizontal message-form  col-xs-12">
+									<div class="">
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-recipient">Recipient:</label>
+
+											<div class="col-sm-9">
+												<span class="input-icon">
+													<input type="email" name="recipient" id="form-field-recipient" data-value="alex@doe.com" value="alex@doe.com" placeholder="Recipient(s)">
+													<i class="icon-user"></i>
+												</span>
+											</div>
 										</div>
 
-										<div class="dropup dropdown-preview">
-											<ul class="dropdown-menu dropdown-purple">
-												<li>
-													<a href="#" tabindex="-1">Action</a>
-												</li>
+										<div class="hr hr-18 dotted"></div>
 
-												<li>
-													<a href="#" tabindex="-1">Another action</a>
-												</li>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right" for="form-field-subject">Subject:</label>
 
-												<li>
-													<a href="#" tabindex="-1">Something else here</a>
-												</li>
-
-												<li class="divider"></li>
-
-												<li class="dropdown-hover dropup">
-													<a href="#" tabindex="-1">More options</a>
-
-													<ul class="dropdown-menu pull-right">
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-													</ul>
-												</li>
-											</ul>
+											<div class="col-sm-6 col-xs-12">
+												<div class="input-icon block col-xs-12 no-padding">
+													<input maxlength="100" type="text" class="col-xs-12" name="subject" id="form-field-subject" placeholder="Subject">
+													<i class="icon-comment-alt"></i>
+												</div>
+											</div>
 										</div>
 
-										<div class="dropup dropdown-preview">
-											<ul class="dropdown-menu dropdown-light">
-												<li>
-													<a href="#" tabindex="-1">Action</a>
-												</li>
+										<div class="hr hr-18 dotted"></div>
 
-												<li>
-													<a href="#" tabindex="-1">Another action</a>
-												</li>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right">
+												<span class="inline space-24 hidden-480"></span>
+												Message:
+											</label>
 
-												<li>
-													<a href="#" tabindex="-1">Something else here</a>
-												</li>
+											<div class="col-sm-9">
+												<div class="wysiwyg-editor"></div>
+											</div>
+										</div>
 
-												<li class="divider"></li>
+										<div class="hr hr-18 dotted"></div>
 
-												<li class="dropup dropdown-hover">
-													<a href="#" tabindex="-1">More options</a>
+										<div class="form-group no-margin-bottom">
+											<label class="col-sm-3 control-label no-padding-right">Attachments:</label>
 
-													<ul class="dropdown-menu pull-left">
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
+											<div class="col-sm-9">
+												<div id="form-attachments">
+													<input type="file" name="attachment[]">
+												</div>
+											</div>
+										</div>
 
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
+										<div class="align-right">
+											<button id="id-add-attachment" type="button" class="btn btn-sm btn-danger">
+												<i class="icon-paper-clip bigger-140"></i>
+												Add Attachment
+											</button>
+										</div>
 
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
+										<div class="space"></div>
+									</div>
+								</form>
 
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
+								<div class="hide message-content" id="id-message-content">
+									<div class="message-header clearfix">
+										<div class="pull-left">
+											<span class="blue bigger-125"> Clik to open this message </span>
 
-														<li>
-															<a href="#" tabindex="-1">Second level link</a>
-														</li>
-													</ul>
-												</li>
-											</ul>
+											<div class="space-4"></div>
+
+											<i class="icon-star orange2 mark-star"></i>
+
+											&nbsp;
+											<img class="middle" alt="John's Avatar" src="assets/avatars/avatar.png" width="32">
+											&nbsp;
+											<a href="#" class="sender">John Doe</a>
+
+											&nbsp;
+											<i class="icon-time bigger-110 orange middle"></i>
+											<span class="time">Today, 7:15 pm</span>
+										</div>
+
+										<div class="action-buttons pull-right">
+											<a href="#">
+												<i class="icon-reply green icon-only bigger-130"></i>
+											</a>
+
+											<a href="#">
+												<i class="icon-mail-forward blue icon-only bigger-130"></i>
+											</a>
+
+											<a href="#">
+												<i class="icon-trash red icon-only bigger-130"></i>
+											</a>
 										</div>
 									</div>
 
-									<div class="col-sm-6">
-										<h3 class="row header smaller lighter blue">
-											<span class="col-sm-7">
-												<i class="icon-th-large"></i>
-												Pills
-											</span><!-- /span -->
+									<div class="hr hr-double"></div>
 
-											<span class="col-sm-5">
-												<label class="pull-right inline">
-													<small class="muted">Stacked:</small>
+									<div class="message-body">
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+										</p>
 
-													<input id="id-pills-stacked" type="checkbox" class="ace ace-switch ace-switch-5">
-													<span class="lbl"></span>
-												</label>
-											</span><!-- /span -->
-										</h3>
+										<p>
+											Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										</p>
 
-										<ul class="nav nav-pills">
-											<li class="active">
-												<a href="#">Home</a>
-											</li>
+										<p>
+											Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+										</p>
 
-											<li class="disabled">
-												<a href="#">Profile</a>
+										<p>
+											Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+										</p>
+
+										<p>
+											Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+										</p>
+
+										<p>
+											Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										</p>
+									</div>
+
+									<div class="hr hr-double"></div>
+
+									<div class="message-attachment clearfix">
+										<div class="attachment-title">
+											<span class="blue bolder bigger-110">Attachments</span>
+											&nbsp;
+											<span class="grey">(2 files, 4.5 MB)</span>
+
+											<div class="inline position-relative">
+												<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+													&nbsp;
+													<i class="icon-caret-down bigger-125 middle"></i>
+												</a>
+
+												<ul class="dropdown-menu dropdown-lighter">
+													<li>
+														<a href="#">Download all as zip</a>
+													</li>
+
+													<li>
+														<a href="#">Display in slideshow</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+										&nbsp;
+										<ul class="attachment-list pull-left list-unstyled">
+											<li>
+												<a href="#" class="attached-file inline">
+													<i class="icon-file-alt bigger-110 middle"></i>
+													<span class="attached-name middle">Document1.pdf</span>
+												</a>
+
+												<div class="action-buttons inline">
+													<a href="#">
+														<i class="icon-download-alt bigger-125 blue"></i>
+													</a>
+
+													<a href="#">
+														<i class="icon-trash bigger-125 red"></i>
+													</a>
+												</div>
 											</li>
 
 											<li>
-												<a href="#">Messages</a>
+												<a href="#" class="attached-file inline">
+													<i class="icon-film bigger-110 middle"></i>
+													<span class="attached-name middle">Sample.mp4</span>
+												</a>
+
+												<div class="action-buttons inline">
+													<a href="#">
+														<i class="icon-download-alt bigger-125 blue"></i>
+													</a>
+
+													<a href="#">
+														<i class="icon-trash bigger-125 red"></i>
+													</a>
+												</div>
 											</li>
 										</ul>
-									</div>
-								</div>
 
-								<script type="text/javascript">
-									var $path_assets = "assets";//this will be used in gritter alerts containing images
-								</script>
+										<div class="attachment-images pull-right">
+											<div class="vspace-sm-4"></div>
+
+											<div>
+												<img width="36" alt="image 4" src="assets/images/gallery/thumb-4.jpg">
+												<img width="36" alt="image 3" src="assets/images/gallery/thumb-3.jpg">
+												<img width="36" alt="image 2" src="assets/images/gallery/thumb-2.jpg">
+												<img width="36" alt="image 1" src="assets/images/gallery/thumb-1.jpg">
+											</div>
+										</div>
+									</div>
+								</div><!-- /.message-content -->
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div> <!-- // .main-content  -->
-       </div> <!-- // .main-container-inner  -->
-    </div><!--// .main-container --> 
-</div> <!-- // #m_contents  -->
+
+                  <!-- 본문 내용 끝-->
+				</div> <!-- END.page-content -->
+          </div> <!-- END .main-content -->
+       </div> <!-- END.main-container-inner -->
+    </div><!-- END .main-container --> 
+</div> <!-- END #m_contents -->
+ 
 <!-- 
     ====================================================================================================================
     =============================================== 스크립트 영역  ======================================================

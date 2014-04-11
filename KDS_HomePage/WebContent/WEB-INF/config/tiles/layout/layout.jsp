@@ -14,10 +14,8 @@
 	     <t:insertAttribute name="top"/>
 	     <div id="b_container">
 	        <t:insertAttribute name="lnb"/>
-	        <div id="m_container">
-	          <t:insertAttribute name="snb"/>
-	          <t:insertAttribute name="contents"/>
-	        </div>
+            <t:insertAttribute name="snb"/>
+           <t:insertAttribute name="contents"/>
 	     </div>
 	     <t:insertAttribute name="footer"/>
 	   </div> 
