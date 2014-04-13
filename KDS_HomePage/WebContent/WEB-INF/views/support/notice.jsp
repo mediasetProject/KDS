@@ -1,7 +1,9 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <link href="/js/plugins/bootstrap-dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
-
+<style>
+  .ui-jqdialog { display: none; width: 300px; position: absolute; padding: .2em; font-size:11px; overflow:visible;}
+</style>
 
 <div id="m_contents" >
   <div id="main-container" class="main-container">          
@@ -45,7 +47,7 @@
                     <!-- Grid 영역 끝 -->  
                     
                     <!-- form 영역 시작 -->  
-                    <div class="row" id="form_container" style="display:visible">
+                    <div class="row" id="form_container" style="display:none">
 			            <div class="col-xs-12">
 
 							<form id="main-form" class="form-horizontal" role="form" enctype="multipart/form-data" method="post">
@@ -114,7 +116,9 @@
  -->
 
 <!-- 추가 플러그인 -->
-
+<script type="text/javascript" src="/js/bootstrap/assets/js/jqGrid/i18n/grid.locale-kr.js"></script>
+<script src="/js/bootstrap/assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+<script src="/js/mediaset/jquery.mcgrid.js"></script>
 <script src="/js/plugins/prettify/run_prettify.js"></script>
 <script src="/js/plugins/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
 <script src="/js/bootstrap/assets/js/ace-elements.min.js"></script>

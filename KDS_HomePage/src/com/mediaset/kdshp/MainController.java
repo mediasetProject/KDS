@@ -23,10 +23,6 @@ public class MainController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@Autowired
-	private SqlMapClientTemplate sqlMap;
-	
-	
 	
 	/**
 	 * <p>KDS 홈페이지 Root</p>

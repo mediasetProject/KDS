@@ -18,32 +18,31 @@ import com.mediaset.kdshp.util.XmlFileManager;
 
 
 @Controller
-public class Advert {
+public class CompanyNavigator {
 
-	private static final Logger logger = LoggerFactory.getLogger(Advert.class);
+	private static final Logger logger = LoggerFactory.getLogger(CompanyNavigator.class);
 	
 	@Autowired
 	private SqlMapClientTemplate sqlMap;
 	
 	
-	
 	/**
-	 * <p>광고 Navigator</p>
+	 * <p>Company Navigator</p>
 	 * <br>
 	 * 
 	 * @param request HttpServletRequest - 요청 데이터
 	 */
-	@RequestMapping(value = "/advert", method=RequestMethod.POST)
-	public String moveToAdvert(HttpServletRequest request) {
+	@RequestMapping(value = "/company", method=RequestMethod.POST)
+	public String moveToCompany(HttpServletRequest request) {
 		
-		logger.info("Msg> Connect(/advert)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		
+		logger.info("Msg> Connect(/company)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		  
 		HttpSession session = request.getSession();
-		JSONArray sub_views = (JSONArray)session.getAttribute("advert_views");
+		JSONArray sub_views = (JSONArray)session.getAttribute("company_views");
 		
 		if(sub_views == null){
 			String sub_views_XF = "http://"+request.getServerName()+":"+request.getServerPort()+"/xml/sub_views.xml";
-			sub_views = XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "advert");
+			sub_views = XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "company");
 		}
 		
 		String snbIdx   = (request.getParameter("snbIdx").equals("") ? "1" : (request.getParameter("snbIdx")));
@@ -52,9 +51,11 @@ public class Advert {
 		request.setAttribute("lnbIdx", request.getParameter("lnbIdx"));
 		request.setAttribute("snbIdx", snbIdx);
 		
-		logger.info("Msg> Disconnect(/advert)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
-		return "advert/"+viewName+".mv";
+		logger.info("Msg> Disconnect(/company)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
+		return "company/"+viewName+".mv";
 	}
+	
+	
 	
 	
 }

@@ -17,13 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mediaset.kdshp.util.XmlFileManager;
 
 @Controller
-public class Broadcast {
+public class BroadcastNavigator {
 	
-   private static final Logger logger = LoggerFactory.getLogger(Broadcast.class);
-	
-	@Autowired
-	private SqlMapClientTemplate sqlMap;
-	
+   private static final Logger logger = LoggerFactory.getLogger(BroadcastNavigator.class);
 	
 	
 	/**

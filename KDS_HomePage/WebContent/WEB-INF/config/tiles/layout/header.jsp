@@ -8,10 +8,9 @@
 
 
   <!-------------------------------- KDS Basic CSS----------------------->
-   <link rel="stylesheet" href="/css/pages.css" /> 
    <link rel="stylesheet" href="/css/layout.css" /> 
    <link rel="stylesheet" href="/css/navigator.css" /> 
-
+   <link rel="stylesheet" href="/css/pages.css" /> 
 
 
   <!--------------------------------- BOOTSTRAP --------------------------->
@@ -53,7 +52,14 @@
 	  <!-- Ace 폰트 -->
 	  <link rel="stylesheet" href="/js/bootstrap/assets/css/ace-fonts.css">
  
-  
+
+    <!---------------------------- KDS 공통 스타일 --------------------------------->
+   
+     <link rel="stylesheet" href="/css/common.css" />
+ 
+
+
+
   
     <!-------------------------------------- 기본 스크립트 ------------------------------------->
     
@@ -92,4 +98,4 @@
 	  <![endif]-->
      
     
- 
+
