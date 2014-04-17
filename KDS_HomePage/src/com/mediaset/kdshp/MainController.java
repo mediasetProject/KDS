@@ -44,14 +44,19 @@ public class MainController {
 		
 		HttpSession session = request.getSession();
 		
+		// kds 환경변수 xml 
+		String kds_env_XF   = "http://"+request.getServerName()+":"+request.getServerPort()+"/xml/kds_env.xml";
+		session.setAttribute("storage_path"   , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(kds_env_XF), "storage-path"));
+		
+		
 		// 서브페이지 리스트 세션 등록
 		String sub_views_XF = "http://"+request.getServerName()+":"+request.getServerPort()+"/xml/sub_views.xml";
-		
 		session.setAttribute("company_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "company"));
 		session.setAttribute("broadcast_views", XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "broadcast"));
 		session.setAttribute("advert_views"   , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "advert"));
 		session.setAttribute("support_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "support"));
 
+		
 		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "index.mv";
 	}
