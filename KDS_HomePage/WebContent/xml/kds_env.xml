@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<kdshp-app>
+
+  <!-- 스토리지 경로 -->
+	<storage-path>
+		<storage-path-value>
+			<name></name>
+			<value>/home/boh/dev_KDS_hp/notice_upload_file</value>
+		</storage-path-value>
+	</storage-path>
+  
+</kdshp-app>

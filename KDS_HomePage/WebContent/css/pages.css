@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+/** KDS 의료정책방송 Pages
+  * 
+  * since  : 2014.03.27
+  * author : Boh  
+  */
+  
+  
+  
+  /*** INDEX.jsp ***/
+	 
+	 /* 큰 프레임 */
+	 .idxLeftA{
+		 float:left;width:200px; 
+	 }
+	  .idxCenterA{
+		 float:left;width:410px; 
+	 }
+	  .idxRightA{
+		 float:left;width:360px;
+	 }
+	 
+	 
+	 /* 세부 프레임 - LEFT */
+	 .idxLogo{
+	    width:200px;height:140px;
+	 }
+	 
+	 
+	 .idxMenu{
+	    width:200px;height:500px;
+	    background-color:#2C2B2B;
+	 }
+	 .idxMenu ul{
+	    list-style:none;
+	    margin-left:19px
+	 }
+	 .idxMenu ul li{
+	    padding-top : 10px;
+	 }
+	 .idxMenu ul li a{
+	    
+	 }
+	  .idxMenu ul li a:hover{
+	    
+	 }
+	 
+	 .idxBlank{ 
+	    width:200px;min-height:84px;background-color:#2C2B2B;
+	 }
+	 .idxContact{   /* copyright */
+	    width:200px;height:114px;
+	 }
+	 
+	 /* 세부 프레임 - CENTER */
+	 .idxContact{
+	    width:200px;height:114px;
+	 }
+	 
+	 /* 세부 프레임 - RIGHT */
+	 .idxMovieContent{
+		 width:360px;height:203px;
+	 }
+	 .idxSponor{
+	    width:360px;height:255px;
+	 }
+	 
+  
+  
+  
+  
+  
+ /* 고객지원  */
+
+  /*  1. 공지사항       */
+  /*  2. 보도자료       */
+  /*  3. 신청서 작성    */
+  /* 4. FAQ         */

@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
+<link href="/js/plugins/bootstrap-dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
 <style>
      /* 스피너 위치 조정 */
 	 .spinner {margin-top:80px;margin-left:170px} 
@@ -211,7 +212,8 @@
 <script src="/js/bootstrap/assets/js/fuelux/fuelux.wizard.min.js"></script>
 <script src="/js/bootstrap/assets/js/jquery.validate.min.js"></script>
 <script src="/js/bootstrap/assets/js/additional-methods.min.js"></script>
-<script src="/js/bootstrap/assets/js/bootbox.min.js"></script>
+<!-- <script src="/js/bootstrap/assets/js/bootbox.min.js"></script> -->
+<script src="/js/plugins/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
 <script src="/js/bootstrap/assets/js/jquery.maskedinput.min.js"></script>
 <script src="/js/bootstrap/assets/js/select2.min.js"></script>
 <script src="/js/bootstrap/assets/js/spin.min.js"></script>

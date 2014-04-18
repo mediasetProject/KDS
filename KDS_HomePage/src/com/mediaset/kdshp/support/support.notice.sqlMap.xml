@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="notice_sqlMap">
+	
+	
+	<select id="queryNoticeListRows" parameterClass="java.util.HashMap"  resultClass="java.lang.Integer" >
+	    SELECT  COUNT(*) FROM kds_notice
+	      WHERE 
+           has_priority = 'N'
+		    <dynamic>
+			  <isNotEmpty property="search_txt" prepend="AND">
+			    title LIKE '%$search_txt$%' OR content LIKE '%$search_txt$%'
+			  </isNotEmpty>
+			</dynamic> 
+	 </select>
+	 
+	 <!-- 공지사항 상단표출 Article -->
+	<select id="queryTopNoticeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	  SELECT 
+	    seq,
+		title,
+		content,
+		file_path,
+		writer,
+		read_account,
+		has_priority,
+		reg_date,
+		file_name 
+		
+		FROM kds_notice
+		
+		WHERE  1=1
+		AND has_priority = "Y"
+		
+		ORDER BY reg_date DESC  
+	</select>
+	 
+	<!-- 공지사항 일반표출 Article -->
+	<select id="queryNoticeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	  SELECT 
+	    seq,
+		title,
+		content,
+		file_path,
+		writer,
+		read_account,
+		has_priority,
+		reg_date,
+		file_name 
+		
+		FROM kds_notice
+		
+		WHERE  1=1
+		
+		AND has_priority = "N"
+		
+		<dynamic>
+		  <isNotEmpty property="search_txt" prepend="AND">
+		    (title LIKE '%$search_txt$%' OR content LIKE '%$search_txt$%')
+		  </isNotEmpty>
+		</dynamic>  
+ 
+		  
+		ORDER BY reg_date DESC  
+		LIMIT  #startRow#  , #rows#
+	</select>
+	
+	<insert id="addNotice" parameterClass="java.util.HashMap">
+	 INSERT INTO kds_notice 
+	    (title,content,file_name,file_path, writer,has_priority,reg_date)
+     VALUES 
+       (#notice_title#,#notice_content#,#file_name#,#file_input#,'바른몸',#has_priority#,now())
+	
+	</insert>
+	
+	<delete id="deleteArticle" parameterClass="java.util.HashMap">
+	  DELETE FROM kds_notice WHERE seq = #seq#
+	</delete>
+
+   <update id="updateArticleReadAccount" parameterClass="java.util.HashMap">
+     UPDATE kds_notice
+	 SET read_account = read_account + 1
+	 WHERE
+		seq = #seq#
+   </update>
+</sqlMap>

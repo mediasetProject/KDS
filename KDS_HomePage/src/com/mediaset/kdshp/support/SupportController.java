@@ -1,0 +1,438 @@
+package com.mediaset.kdshp.support;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.mediaset.kdshp.common.AjaxResultCode;
+import com.mediaset.kdshp.common.KDSCodeMaster;
+import com.mediaset.kdshp.common.jqGridParameters;
+import com.mediaset.kdshp.util.DateUtil;
+import com.mediaset.kdshp.util.FileUtil;
+import com.mediaset.kdshp.util.MailSendComponent;
+import com.mediaset.kdshp.util.XmlFileManager;
+import com.mediaset.kdshp.util.FileUtil;
+
+@Controller
+public class SupportController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(SupportController.class);
+	
+	@Autowired
+	private SqlMapClientTemplate sqlMap;
+	
+	@Autowired
+	private MailSendComponent mailSender;
+	
+	
+	private String NOTICE_DIR = "notice";
+	private String SLASH = "/";
+	
+	
+	private String noticeSqlMap = "notice_sqlMap.";
+	
+	
+    /*	고객지원 - 공지사항 */
+	
+	/**
+	 * <p>공지사항 조회 (jqGrid)</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/notice/queryNoticeList",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject queryNoticeList(HttpServletRequest request, jqGridParameters jqGridParam, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > queryNoticeList)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+		
+		List<HashMap<String,Object>> infoTopList = null;  // 상단표출 공지사항
+		List<HashMap<String,Object>> infoList    = null;  // 일반표출 공지사항 
+		HashMap<String,String> jqGridData        = null;
+		
+		int rows = jqGridParam.getRows();
+		int page = jqGridParam.getPage();
+		
+		mMap.put("startRow", (page-1)*rows);
+		mMap.put("page", page);
+		mMap.put("rows", rows);
+		
+		int rowcount = (Integer)sqlMap.queryForObject(noticeSqlMap + "queryNoticeListRows", mMap); 
+		
+		int total_pages = 0 ;
+		total_pages = (rowcount > 0) ? (int)(java.lang.Math.ceil( (double)rowcount / rows)) : 0; 
+		
+		
+		jsonObj.put("total"   , total_pages);       // 1. 
+		jsonObj.put("page"    , page);	        	  // 2. 
+		jsonObj.put("records" , rowcount);	         // 3. 
+		
+		ArrayList<HashMap<String,String>> jqGridRows = new ArrayList<HashMap<String,String>>();
+		
+		infoTopList = (List<HashMap<String,Object>>)sqlMap.queryForList(noticeSqlMap + "queryTopNoticeList", mMap);
+		infoList    = (List<HashMap<String,Object>>)sqlMap.queryForList(noticeSqlMap + "queryNoticeList", mMap);
+		
+		
+		// 상단표출 공지사항 jqGrid  추가
+		if(infoTopList.size() > 0 ){
+			for (int i = 0; i < infoTopList.size(); i++) {
+				jqGridData = new HashMap<String,String>();
+				jqGridData.put("id"       , infoTopList.get(i).get("seq").toString());
+				jqGridData.put("seq"      , "공 지");
+				jqGridData.put("title"    , infoTopList.get(i).get("title").toString());
+				jqGridData.put("writer"   , infoTopList.get(i).get("writer").toString());
+				jqGridData.put("reg_date" , infoTopList.get(i).get("reg_date").toString());
+				jqGridData.put("content"      , infoTopList.get(i).get("content").toString());
+				jqGridData.put("read_account" , infoTopList.get(i).get("read_account").toString());
+				jqGridData.put("file_name"    , infoTopList.get(i).get("file_name").toString());
+				jqGridData.put("file_path"    , infoTopList.get(i).get("file_path").toString());
+				jqGridData.put("has_priority" , infoTopList.get(i).get("has_priority").toString());
+				
+				jqGridRows.add(jqGridData);
+			}
+		}
+		
+		// 일반표출 공지사항 jqGrid  추가
+		if(infoList.size() > 0){
+			for (int i = 0; i < infoList.size(); i++) {
+				
+				jqGridData = new HashMap<String,String>();
+				
+				jqGridData.put("id"       , infoList.get(i).get("seq").toString());
+				jqGridData.put("seq"      , infoList.get(i).get("seq").toString());
+				jqGridData.put("title"    , infoList.get(i).get("title").toString());
+				jqGridData.put("writer"   , infoList.get(i).get("writer").toString());
+				jqGridData.put("reg_date" , infoList.get(i).get("reg_date").toString());
+				jqGridData.put("content"      , infoList.get(i).get("content").toString());
+				jqGridData.put("read_account" , infoList.get(i).get("read_account").toString());
+				jqGridData.put("file_name"    , infoList.get(i).get("file_name").toString());
+				jqGridData.put("file_path"    , infoList.get(i).get("file_path").toString());
+				jqGridData.put("has_priority" , infoList.get(i).get("has_priority").toString());
+				
+				jqGridRows.add(jqGridData);
+			}
+		}
+		
+		jsonObj.put("rows", jqGridRows);     // 4. 
+		
+		logger.info("Msg> DisConnect(SupportController > queryNoticeList)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>공지사항 입력</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/notice/addNotice",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject addNotice(HttpServletRequest request, jqGridParameters jqGridParam, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > addNotice)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			
+			  fileUplad_inserArticle(request, mMap);
+			  
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > queryNoticeList)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>공지사항 수정</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/notice/updateArticle",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject updateArticle(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > updateArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			
+			this.delFileAndArticle(request, mMap);
+			this.fileUplad_inserArticle(request, mMap);
+			
+		  } catch (Exception e) {
+			  logger.debug(e.getMessage());
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > updateArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>공지사항 삭제</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/notice/delArticle",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject delArticle(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > delArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			
+			this.delFileAndArticle(request, mMap);
+			
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > delArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>공지사항 조회수 증가</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/notice/increaseArticleReadAccount",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject increaseArticleReadAccount(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > increaseArticleReadAccount)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			
+			sqlMap.delete(noticeSqlMap + "updateArticleReadAccount", mMap);
+			
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > increaseArticleReadAccount)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+   private void fileUplad_inserArticle(HttpServletRequest request, Map<String, Object> mMap)throws Exception{
+		
+		logger.info("Msg> Connect(SupportController > fileUplad_inserArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+
+		
+	    String storageDir = XmlFileManager.getOnlyValue((JSONArray)(request.getSession().getAttribute("storage_path")));
+	    
+	    String fileUrl     = null;
+	    String orgFileName = null;
+	    String fileExt     = null;
+	    String filePath    = null;
+			
+		 if((mMap.get("upload_file_chk").equals("true"))){
+			
+			// 업로드 파일 저장
+			fileUrl     = mMap.get("upload_file_path").toString().trim();
+			orgFileName = mMap.get("fileName").toString().trim();	
+			fileExt     = mMap.get("fileExt").toString().trim();	
+			
+			//DB에 저장되는 파일명 생성
+			String file     = "notice_"+ DateUtil.dateToStrTime(new Date(), DateUtil.DATE_TO_STR_TIME_SEP_KEY_0) + "." + fileExt;
+			       filePath = this.NOTICE_DIR + this.SLASH + file;
+			
+			
+			// 임시폴더에서 이동
+			FileUtil.copyFile(storageDir + this.SLASH + fileUrl,
+					           storageDir + this.SLASH + this.NOTICE_DIR, 
+					           storageDir + this.SLASH + filePath);
+		    }else{
+		    	
+		    	orgFileName = " ";
+		    	filePath    = " ";
+		    }
+		   
+			 mMap.put("file_name" , orgFileName);
+			 mMap.put("file_input", filePath);
+		 	
+			// 임시폴더 삭제
+		   File tmpDir = new File(storageDir + this.SLASH + KDSCodeMaster.FILE_TEMP_PATH);
+		   if(tmpDir.exists()){  FileUtil.deleteFolder(tmpDir); }
+			
+			sqlMap.insert(noticeSqlMap + "addNotice", mMap);
+		
+		
+		logger.info("Msg> DisConnect(SupportController > fileUplad_inserArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+	}
+	
+   
+   private void delFileAndArticle(HttpServletRequest request, Map<String, Object> mMap)throws Exception{
+		
+		logger.info("Msg> Connect(SupportController > delFileAndArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		String storageDir = XmlFileManager.getOnlyValue((JSONArray)(request.getSession().getAttribute("storage_path")));
+		String file_path = (String)mMap.get("file_path");
+		
+		if(file_path != null && !file_path.equals("")){
+			new File(storageDir + this.SLASH + file_path).delete(); 
+		}
+		
+		sqlMap.delete(noticeSqlMap + "deleteArticle", mMap);
+	  
+		logger.info("Msg> DisConnect(SupportController > delFileAndArticle)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+	}
+	
+   
+   
+   
+	
+	/**
+	 * <p>파일 다운로드</p>
+	 * <br>
+	 * 
+	 * @return ModelAndView - bean id="download", com.mediaset.oasismis.util.DownloadView.java 참조
+	 */
+	@RequestMapping(value="/support/notice/download", method=RequestMethod.POST)
+	public ModelAndView getAttachedFile(HttpServletRequest request,@RequestParam Map<String, Object> mMap) throws IOException {
+		
+		logger.info("Msg> Connect(SupportController > getAttachedFile)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+
+		String storageDir = XmlFileManager.getOnlyValue((JSONArray)(request.getSession().getAttribute("storage_path")));
+		
+		String sourceFile = mMap.get("file_path").toString();
+		String targetFile = mMap.get("file_name")+"."+FileUtil.getFileExt(sourceFile);
+		
+		FileUtil.copyFile(storageDir + this.SLASH + sourceFile,
+				           storageDir + this.SLASH + targetFile);
+		
+		
+		logger.info("Msg> DisConnect(SupportController > getAttachedFile)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return new ModelAndView("download","downloadFile",new File(storageDir + this.SLASH + targetFile));
+	}
+	
+	
+	/*	고객지원 - 신청서작성 */
+	
+	/**
+	 * <p>신청서 메일 전송</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/mk_application/sendEmail",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject sendAppEmail(HttpServletRequest request,
+												          @RequestParam Map<String, String> mMap){
+		
+		logger.info("Msg> Connect(support > sendAppEmail)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		
+		String dentalClinic = mMap.get("dentalClinic");
+		String dentist      = mMap.get("dentist");
+		String contact      = mMap.get("contract");
+		String addr         = mMap.get("addr"); 
+		String memo         = mMap.get("memo"); 
+		
+		
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		 StringBuilder contents = new StringBuilder();
+		 contents.append("<p><b>"+ dentalClinic +" ("+ dentist +" <small>원장님</small>)</b>에서 셋탑박스 설치를 요청하였습니다.</p>");
+		 contents.append("<p>"+ memo +"</p>");
+		 contents.append("<p>"+ addr +" </p>");
+		 contents.append("<p>"+ contact +"</p>");
+
+		 try {
+			mailSender.sendMail("("+dentalClinic+") 의료정책방송 신청", contents.toString());
+			
+			// 신청내용 DB 저장
+			
+			
+		} catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		}
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(support > sendAppEmail)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	
+
+		
+	
+
+}

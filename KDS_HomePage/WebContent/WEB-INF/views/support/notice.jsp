@@ -3,10 +3,6 @@
 <link href="/js/plugins/bootstrap-dialog/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
 <style>
   .ui-jqdialog { display: none; width: 300px; position: absolute; padding: .2em; font-size:11px; overflow:visible;}
-  .mode_edit {
-      color:green;
-      disabled: true !impoartant
-  }
 </style>
 
 <div id="m_contents" >
@@ -74,7 +70,7 @@
 									<div class="form-group">
 										<div class="col-sm-10 clearfix">
 											<span>
-												<input id="notice_title" name="notice_title" type="text" class="col-sm-8 reg-mode edit-mode view-mode" placeholder="제 목"  />&nbsp;
+												<input id="notice_title" name="notice_title" type="text" class="col-sm-8 reg-mode edit-mode view-mode" placeholder="제  목"/>&nbsp;
 													<label class="reg-mode edit-mode">
 														<input name="ckb_has_priority" id="ckb_has_priority" type="checkbox" class="ace">
 														<span class="label label-success arrowed-in-right  arrowed " id="lbl_has_priority" style="cursor:pointer">상단표출</span>

@@ -47,6 +47,12 @@
 			    background-color : gray;
 			}
 			
+			@media screen and (min-width: 768px) {
+			  .modal-dialog {
+			    padding-top: 280px;
+			  }
+			}
+			
 	  </style>
 	
 	  <!-- Ace 폰트 -->
