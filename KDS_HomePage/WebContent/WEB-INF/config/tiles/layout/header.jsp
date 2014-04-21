@@ -53,6 +53,11 @@
 			  }
 			}
 			
+			.profile-activity img {
+			  border-radius: 0;
+			  max-width: 100px;
+			}
+			
 	  </style>
 	
 	  <!-- Ace 폰트 -->

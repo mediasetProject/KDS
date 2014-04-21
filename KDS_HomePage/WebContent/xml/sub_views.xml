@@ -94,7 +94,7 @@
           <desc>공지사항</desc>
        </sub_view>
        <sub_view>
-          <name>s2</name>
+          <name>report</name>
           <value>2</value>
           <desc>보도자료</desc>
        </sub_view>

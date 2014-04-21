@@ -16,10 +16,10 @@
 	             
                   <div class="page-header">
 						<h1>
-							신청서작성
+							고객지원
 							<small>
 								<i class="icon-double-angle-right"></i>
-								셋탑박스 설치 및 치과 병·의원 대기실 TV 사용신청
+								신청서작성
 							</small>
 						</h1>
 					</div>

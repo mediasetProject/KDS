@@ -14,10 +14,10 @@
 				  
 				    <div class="page-header">
 							<h1>
-								공지사항
+								고객지원
 								<small>
 									<i class="icon-double-angle-right"></i>
-									Dynamic tables and grids using jqGrid plugin
+									공지사항
 								</small>
 							</h1>
 					 </div>
@@ -58,7 +58,6 @@
                     <!-- form 영역 시작 -->  
                     <div class="row" id="form_container" style="display:none">
 			            <div class="col-xs-12">
-
 							<form id="main-form" class="form-horizontal" role="form" enctype="multipart/form-data" method="post">
 							
 							      <input name="has_priority" id="has_priority" type="hidden" />
