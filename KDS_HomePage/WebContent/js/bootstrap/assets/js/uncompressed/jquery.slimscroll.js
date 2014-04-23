@@ -427,8 +427,10 @@
             queueHide = setTimeout(function(){
               if (!(o.disableFadeOut && isOverPanel) && !isOverBar && !isDragg)
               {
-                bar.fadeOut('slow');
-                rail.fadeOut('slow');
+               /* bar.fadeOut('slow');
+                rail.fadeOut('slow');*/
+            	  bar.fadeOut('fast');
+                rail.fadeOut('fast');
               }
             }, 1000);
           }

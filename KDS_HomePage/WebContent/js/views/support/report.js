@@ -41,12 +41,9 @@ var mMain={
 	        messageAlarm.open();
 	 },
 	 
-	 
-	 actEvent:function(){},
-	 
-	 init:function(){
-		 
-		 
+	 //파일업로드 컨트롤러 셋팅
+	 init_Fileupload : function(){
+		
 		 $('#file_input').ace_file_input({
 				no_file:"파일을 선택해주세요",
 				btn_choose:'파일선택',
@@ -74,7 +71,6 @@ var mMain={
 						return false;
 					}
 					
-					
 					// 임시파일로 업로드
 					
 					
@@ -85,6 +81,71 @@ var mMain={
 				preview_error : function(filename, error_code) {}
 		
 			}).on('change', function(){});
+		 
+	 },
+	 
+	 //슬림스크롤 셋팅
+	 init_SlimScroll : function(){
+		 
+		 $(".slimscrollDIV").slimScroll({
+			 height: '160px',
+			 alwaysVisible: false,
+			 touchScrollStep : 500
+			});
+		 $(".slimScrollBar").hide();
+		 
+	 },
+	 
+	 //이미지 확대보기 셋팅
+	 init_ZoomInImage : function(){
+
+		var colorbox_params = {
+			reposition:true,
+			scalePhotos:true,
+			scrolling:false,
+			previous:'<i class="icon-arrow-left"></i>',
+			next:'<i class="icon-arrow-right"></i>',
+			close:'&times;',
+			current:'{current} of {total}',
+			maxWidth:'100%',
+			maxHeight:'100%',
+			onOpen:function(){
+				document.body.style.overflow = 'hidden';
+			},
+			onClosed:function(){
+				document.body.style.overflow = 'auto';
+			},
+			onComplete:function(){
+				$.colorbox.resize();
+			}
+		};
+	
+		$('.profile-activity [data-rel="colorbox"]').colorbox(colorbox_params);
+		$("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
+	
+		/**$(window).on('resize.colorbox', function() {
+			try {
+				//this function has been changed in recent versions of colorbox, so it won't work
+				$.fn.colorbox.load();//to redraw the current frame
+			} catch(e){}
+		});*/
+		
+		 
+	 },
+	 
+	 actEvent:function(){},
+	 
+	 init:function(){
+		 
+	 
+	    //슬림스크롤 초기화
+		 mMain.init_SlimScroll();
+
+		//이미지 크게보기 초기화
+		 mMain.init_ZoomInImage();
+		 
+		 
+		 
 			
 	 }
 };

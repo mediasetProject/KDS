@@ -54,13 +54,28 @@
 		<div class="idxRightA">
 		  <div class="idxMovieContent">
 		     <!-- 홍보 동영상 시작 -->
-		     <video id="" class="video-js vjs-default-skin vjs-big-play-centered"  width="360" height="203"
+		     
+			<a class="sublime" href="#idx_advmovie" title="" data-settings="close-button-visibility:visible;"> 
+			  <img src="/images/common/kds_logo.png" width="360" height="203"   alt="" />
+			</a>
+
+			<video id="idx_advmovie" poster="/js/bootstrap/assets/avatars/avatar5.png" width="780" height="460" title="" preload="none" style="display: none">
+				<source src="/assets/vedio/vedio_test.mp4" />
+				<source src="https://cdn.sublimevideo.net/vpa/ms_720p.mp4" data-quality="hd" />
+				<source src="https://cdn.sublimevideo.net/vpa/ms_360p.webm" />
+				<source src="https://cdn.sublimevideo.net/vpa/ms_720p.webm" data-quality="hd" />
+			</video>
+
+
+<!-- 		 
+           <video id="" class="video-js vjs-default-skin vjs-big-play-centered"  width="360" height="203"
 				          poster="/images/common/kds_logo.png"
 				          data-setup='{ "controls": true, "autoplay": false, "preload": "auto", "loop" : false }'>
 			    <source src="/assets/vedio/vedio_test.mp4" type='video/mp4' />
-			    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-			    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-			</video>	  
+			    <source src="" type='video/webm' />
+			    <source src="" type='video/ogg' />
+			</video> 
+-->	  
 		    <!-- 홍보 동영상 끝 -->
 		  </div>
 		  <div>
