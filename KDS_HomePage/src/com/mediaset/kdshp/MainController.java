@@ -23,6 +23,8 @@ public class MainController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
+	@Autowired
+	private SqlMapClientTemplate sqlMap;
 	
 	/**
 	 * <p>KDS 홈페이지 Root</p>
@@ -56,6 +58,7 @@ public class MainController {
 		session.setAttribute("advert_views"   , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "advert"));
 		session.setAttribute("support_views"  , XmlFileManager.getValue2nd(XmlFileManager.readXMLFile(sub_views_XF), "support"));
 
+		
 		
 		logger.info("Msg> Disconnect(/)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "index.mv";

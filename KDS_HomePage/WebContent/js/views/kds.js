@@ -16,6 +16,8 @@ var kdsHP_info = {
 	dwp : "dmlfywjdcorqkdthd",//의료정책방송
 };
 
+
+/*파일 업로드 관련 */
 var file_upload = {
 		
 	WHITE_LIST : ["image/png","image/jpeg","image/gif","image/bmp","image/vnd.microsoft.icon","image/tiff","image/tiff","audio/mpeg",
@@ -47,9 +49,9 @@ var downloadFile = function(url, parameters , method){
 		$(form).appendTo("body").submit().remove();
 		
 	  }
-   }
+   };
 
 
 String.prototype.trim = function() { //전체공백제거
     return this.replace(/^\s+|\s+$/g,"");
-}
+};

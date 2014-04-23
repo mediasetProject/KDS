@@ -41,6 +41,168 @@ var mMain={
 	        messageAlarm.open();
 	 },
 	 
+	 //탭 보도자료 리스트
+	 getReportList : function(ctg_code,statusIdx,tabContent){
+		 
+		 $.ajax({
+				url  : "/support/report/getReportList",
+				type : "POST",
+				dataType: "json", 
+				async   : false,
+				data    : {ctg_code : ctg_code},
+				success : function(data){
+					if(data.result == ajaxResultCode.SUCCESS){
+						if(data.reportlist.length > 0){
+							
+							 var reportlist = data.reportlist;
+							 
+							 $(tabContent).find(".widget-main").html("");
+							 
+							 var r_items = "";
+							 for(var i = 0 ; i < reportlist.length ; i++){
+								 var report = reportlist[i];
+								 
+								 //only 보도자료
+								 if(report.type == "normal"){
+									 
+									 r_items +='<div class="profile-activity clearfix">';
+									 r_items +=	'<div class="slimscrollDIV">';
+									 r_items +=		'<p>';
+									 r_items +=	     report.content;
+									 r_items +=	   '</p>';
+									 r_items +=    '</div>';
+
+									 r_items +=    '<div class="tools action-buttons">';
+									 r_items +=		'<a href="#" class="blue"><i class="icon-pencil bigger-125"></i></a>';
+									 r_items +=		'<a href="#" class="red"><i  class="icon-remove bigger-125"></i></a>';
+									 r_items +=    '</div>';
+									 r_items +='</div>';
+									  
+								 }
+								 //이미지 보도자료
+								 else if(report.type == "image"){
+									 
+									 r_items +='<div class="profile-activity clearfix">';
+									 r_items +=	'<div class="slimscrollDIV">';
+									 r_items +=	   '<a href="/images/test/test.png"  title="" data-rel="colorbox" >';
+									 r_items +=	     '<img class="pull-left" alt="" src="/js/bootstrap/assets/avatars/avatar5.png">';
+									 r_items +=	   '</a>';
+									 r_items +=       '<div>';
+									 r_items +=	       report.content;
+									 r_items +=	    '</div>';
+									 r_items +=    '</div>';
+									 
+									 r_items +=    '<div class="tools action-buttons">';
+									 r_items +=		'<a href="#" class="blue"><i class="icon-pencil bigger-125"></i></a>';
+									 r_items +=		'<a href="#" class="red"><i  class="icon-remove bigger-125"></i></a>';
+									 r_items +=    '</div>';
+									 r_items +='</div>';
+									 
+								 }
+								 //비디오 보도자료
+								 else if(report.type == "video"){
+									 
+									 r_items +='<div class="profile-activity clearfix">';
+									 r_items +=	'<div class="slimscrollDIV">';
+									 r_items +=	   ' <a  class="sublime"  href="#v'+report.seq+'" title="" data-settings="close-button-visibility:visible;" >';
+									 r_items +=	     '<img class="pull-left" alt="" src="/js/bootstrap/assets/avatars/avatar5.png">';
+									 r_items +=	   '</a>';
+									 r_items +=       '<div>';
+									 r_items +=	       report.content;
+									 r_items +=	    '</div>';
+									 r_items +=    '</div>';
+									 
+									 r_items +=    '<div class="tools action-buttons">';
+									 r_items +=		'<a href="#" class="blue"><i class="icon-pencil bigger-125"></i></a>';
+									 r_items +=		'<a href="#" class="red"><i  class="icon-remove bigger-125"></i></a>';
+									 r_items +=    '</div>';
+									 r_items +='</div>';
+									 
+								 }
+								 
+							 }
+							 $(tabContent).find(".widget-main").html(r_items);
+							
+						}
+					}
+				},
+				complete:function(){}					
+			});	
+		 
+	 },
+	 
+	 //탭 목록 초기화
+	 init_TabList : function(){
+		 $.ajax({
+				url  : "/support/report/getAvaiableCategories",
+				type : "POST",
+				dataType: "json", 
+				data    : {},
+				success : function(data){
+					
+					if(data.result == ajaxResultCode.SUCCESS){
+						if(data.tablist.length > 0){
+							
+							//탭 목록 구성
+							 var tabList = data.tablist;
+							 $("#report_tabs").html("");
+							 $(".tab-content").html("");
+							 
+							 var tab_li   = "";
+							 var tab_cont = "";
+							 
+							 for(var i = 0 ; i < tabList.length ; i++){
+							   tab_li += "<li class='' code_data='"+tabList[i].ctg_code+"' idx='"+i+"'>";
+							   tab_li +=	  "<a data-toggle='tab' href='#tab_"+tabList[i].ctg_code+"'>"+tabList[i].ctg_name+"</a>";
+							   tab_li +=	"</li>";
+							   
+							   tab_cont += "<div id='tab_"+tabList[i].ctg_code+"' class='tab-pane'>";
+							   tab_cont +=   "<p>";
+							   tab_cont +=   "</p>";
+							   tab_cont +=   "<div class='widget-body'>";
+							   tab_cont +=      "<div class='widget-main padding-4'></div>";
+							   tab_cont +=   "</div>";
+							   tab_cont += "</div>";
+							   
+							 }
+							 $("#report_tabs").html(tab_li);
+							 $(".tab-content").html(tab_cont);
+							 
+							
+						}else{
+							$(".tab-content").html("<center> 등록된 보도자료가 없습니다</center>");
+						}
+					}
+				},
+				complete:function(){
+					
+					
+					 $.each($("#report_tabs li"),function(idx, liEle){
+							var ctg_code    = $(this).attr("code_data");
+							var idx         = $(this).attr("idx");
+							var tab_content = "#tab_"+ctg_code;
+							mMain.getReportList(ctg_code,idx,tab_content);
+							
+						 if(idx == 0){
+							 $(liEle).addClass("active").trigger("click");
+							 $("#tab_"+$(liEle).attr("code_data")).addClass("active");
+						 }
+					 });
+					
+					 //슬림스크롤 초기화
+					 mMain.init_SlimScroll();
+
+					//이미지 크게보기 초기화
+					 mMain.init_ZoomInImage();
+					
+				}					
+			});	
+		 
+		
+		 
+		 
+	 },	 
+	 
 	 //파일업로드 컨트롤러 셋팅
 	 init_Fileupload : function(){
 		
@@ -98,7 +260,7 @@ var mMain={
 	 
 	 //이미지 확대보기 셋팅
 	 init_ZoomInImage : function(){
-
+		 
 		var colorbox_params = {
 			reposition:true,
 			scalePhotos:true,
@@ -123,29 +285,14 @@ var mMain={
 		$('.profile-activity [data-rel="colorbox"]').colorbox(colorbox_params);
 		$("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
 	
-		/**$(window).on('resize.colorbox', function() {
-			try {
-				//this function has been changed in recent versions of colorbox, so it won't work
-				$.fn.colorbox.load();//to redraw the current frame
-			} catch(e){}
-		});*/
-		
-		 
 	 },
 	 
 	 actEvent:function(){},
 	 
 	 init:function(){
 		 
-	 
-	    //슬림스크롤 초기화
-		 mMain.init_SlimScroll();
-
-		//이미지 크게보기 초기화
-		 mMain.init_ZoomInImage();
-		 
-		 
-		 
+		//탭 목록 초기화
+		 mMain.init_TabList();
 			
 	 }
 };

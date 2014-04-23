@@ -47,15 +47,15 @@ public class SupportController {
 	@Autowired
 	private MailSendComponent mailSender;
 	
-	
 	private String NOTICE_DIR = "notice";
 	private String SLASH = "/";
 	
-	
 	private String noticeSqlMap = "notice_sqlMap.";
+	private String reportqlMap  = "report_sqlMap.";
 	
 	
-    /*	고객지원 - 공지사항 */
+	
+    /*****************************	고객지원 - 공지사항 *****************************/
 	
 	/**
 	 * <p>공지사항 조회 (jqGrid)</p>
@@ -377,7 +377,112 @@ public class SupportController {
 	}
 	
 	
-	/*	고객지원 - 신청서작성 */
+	
+	
+    /*****************************	고객지원 - 보도자료 *****************************/	
+	
+	/**
+	 * <p>탭 리스트</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/getAvaiableCategories",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject getAvaiableCategories(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > getAvaiableCategories)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		ArrayList<HashMap<String,String>> tabList = new ArrayList<HashMap<String,String>>();
+		
+		try {
+			
+			List<HashMap<String,String>> ctgList = sqlMap.queryForList(reportqlMap + "getAvaiableCategories");
+			if (ctgList.size() > 0 ) {
+				
+				HashMap<String,String> tabItem = null;
+				
+				for (int i = 0; i < ctgList.size(); i++) {
+					  tabItem  = new HashMap<>();
+					  tabItem.put("ctg_code", ctgList.get(i).get("ctg_code"));
+					  tabItem.put("ctg_name", ctgList.get(i).get("ctg_name"));
+					  tabList.add(tabItem);
+				}
+			}
+			
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result" , resultcode);
+		 jsonObj.put("tablist", tabList);
+		
+		logger.info("Msg> DisConnect(SupportController > getAvaiableCategories)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>탭 별 보도자료</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/getReportList",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject getReportList(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > getReportList)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		ArrayList<HashMap<String,String>> reportList = new ArrayList<HashMap<String,String>>();
+		
+		try {
+			
+			List<HashMap<String,String>> rList = sqlMap.queryForList(reportqlMap + "getReportList", mMap);
+			if (rList.size() > 0 ) {
+				
+				HashMap<String,String> reportItem = null;
+				
+				for (int i = 0; i < rList.size(); i++) {
+					  reportItem  = new HashMap<>();
+					  reportItem.put("seq"       , rList.get(i).get("seq"));
+					  reportItem.put("content"   , rList.get(i).get("content"));
+					  reportItem.put("image_path", rList.get(i).get("image_path"));
+					  reportItem.put("video_path", rList.get(i).get("video_path"));
+					  reportItem.put("type"      , rList.get(i).get("type"));
+					  reportItem.put("reg_date"  , rList.get(i).get("reg_date"));
+					  reportList.add(reportItem);
+				}
+			}
+			
+		  } catch (Exception e) {
+			  System.out.println(e.getMessage());
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result" , resultcode);
+		 jsonObj.put("reportlist", reportList);
+		
+		logger.info("Msg> DisConnect(SupportController > getReportList)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	
+	
+	
+    /*****************************	고객지원 - 신청서작성 *****************************/
 	
 	/**
 	 * <p>신청서 메일 전송</p>

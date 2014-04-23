@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="report_sqlMap">
+	
+	
+	<select id="getAvaiableCategories"  resultClass="java.util.HashMap" >
+	   SELECT DISTINCT
+		rpt.ctg_code,
+		ctg.ctg_name
+	   FROM
+		  support_report rpt,
+		  support_report_category ctg
+		WHERE
+		 rpt.ctg_code = ctg.ctg_code
+		ORDER BY rpt.ctg_code asc 
+	 </select>
+	
+	<select id="getReportList"  resultClass="java.util.HashMap" parameterClass="java.util.HashMap" >	
+		SELECT 
+		  CAST(seq AS CHAR) seq,
+		  CAST(reg_date AS CHAR) reg_date , 
+		  content, ifnull(image_path,' ') image_path, 
+		  ifnull(video_path,' ') video_path, 
+		  type
+		FROM support_report
+		WHERE
+		 ctg_code = #ctg_code#
+		ORDER BY reg_date DESC
+	 </select>
+	 
+	<select id="getVideoList"  resultClass="java.util.HashMap">	 
+	   SELECT
+		  CAST(seq AS CHAR) seq,
+		  video_path,
+		  image_path
+		FROM support_report
+		WHERE type = 'video'
+		ORDER BY reg_date DESC
+	 </select>
+</sqlMap>

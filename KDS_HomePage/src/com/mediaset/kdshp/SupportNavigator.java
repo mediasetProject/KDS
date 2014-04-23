@@ -1,6 +1,9 @@
 package com.mediaset.kdshp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +29,8 @@ import com.mediaset.kdshp.util.XmlFileManager;
 public class SupportNavigator {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SupportNavigator.class);
-	
+	@Autowired
+	private SqlMapClientTemplate sqlMap;
 	
 	/**
 	 * <p>고객지원 Navigator</p>
@@ -52,6 +56,27 @@ public class SupportNavigator {
 		
 		request.setAttribute("lnbIdx", request.getParameter("lnbIdx"));
 		request.setAttribute("snbIdx", snbIdx);
+		
+		
+	    // 보도자료
+		if(request.getParameter("snbIdx").equals("2")){
+			
+			ArrayList<HashMap<String,String>> videoList = new ArrayList<HashMap<String,String>>();
+			List<HashMap<String,String>> vList = sqlMap.queryForList("report_sqlMap.getVideoList");
+			if (vList.size() > 0 ) {
+				HashMap<String,String> videoItem = null;
+				for (int i = 0; i < vList.size(); i++) {
+					videoItem = new HashMap<>();
+					videoItem.put("seq"       , vList.get(i).get("seq"));
+					videoItem.put("image_path", vList.get(i).get("image_path"));
+					videoItem.put("video_path", vList.get(i).get("video_path"));
+					videoList.add(videoItem);
+				}
+				request.setAttribute("videoList", videoList);
+			}
+			logger.debug(videoList.size()+"++++++++++++++++++++++++++");
+		}
+		
 		
 		logger.info("Msg> Disconnect(/support)-Time: *************** " + new Date(System.currentTimeMillis()) + " ***************");
 		return "support/"+viewName+".mv";

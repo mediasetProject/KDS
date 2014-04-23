@@ -3,4 +3,5 @@
 <sqlMapConfig>
   <settings useStatementNamespaces="true"/> 
    <sqlMap resource="com/mediaset/kdshp/support/support.notice.sqlMap.xml"/>
+   <sqlMap resource="com/mediaset/kdshp/support/support.report.sqlMap.xml"/>
 </sqlMapConfig>
