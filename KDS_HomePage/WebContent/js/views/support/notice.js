@@ -259,7 +259,7 @@ var mMain={
 	          buttons: [{
 	                label: '취소',
 	                icon: 'icon-remove',
-	                cssClass:"btn-xs",
+	                cssClass:"btn-danger btn-xs",
 	                action: function(dialogRef){
 	                    dialogRef.close();
 	                    mMain.writable = false;

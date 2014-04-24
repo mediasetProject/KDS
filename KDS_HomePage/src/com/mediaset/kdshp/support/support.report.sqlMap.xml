@@ -2,7 +2,12 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="report_sqlMap">
-	
+
+	<select id="getAllTabCategories"  resultClass="java.util.HashMap" >
+		 SELECT ctg_code, ctg_name 
+		 FROM support_report_category 
+		 ORDER BY ctg_code
+	</select>
 	
 	<select id="getAvaiableCategories"  resultClass="java.util.HashMap" >
 	   SELECT DISTINCT
@@ -38,4 +43,31 @@
 		WHERE type = 'video'
 		ORDER BY reg_date DESC
 	 </select>
+	 
+	 <delete  id="deleteReportOne" parameterClass="java.util.HashMap" >
+	  DELETE FROM support_report 
+	  WHERE seq = #seq#
+	 </delete>
+	 
+	 <update id="addReportOne" parameterClass="java.util.HashMap">
+	  INSERT INTO support_report
+       (ctg_code, content, image_path, video_path, type, file_name ,reg_date)
+      VALUES
+		(#tab_category#,#content#,#image_path#,#video_path#,#file_type#,#file_name#,now())
+	 </update>
+	 
+	 <select id="getReportOne"  resultClass="java.util.HashMap">	 
+	 	 SELECT ctg_code, content,file_name, image_path, video_path,type,reg_date 
+	 	 FROM support_report
+        WHERE seq = #seq#
+	 </select>
+	 
+	 <update id="updateReportOne" parameterClass="java.util.HashMap">
+	   UPDATE support_report
+		SET content = #content#
+		WHERE seq = #seq# 
+	 </update>
+	 
+
+	 
 </sqlMap>

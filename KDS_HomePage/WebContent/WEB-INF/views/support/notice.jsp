@@ -38,7 +38,7 @@
 										<input type="text" id="txt_search"  class="form-control search-query input-sm" placeholder="제목, 내용"> 
 										<span class="input-group-btn ">
 											<button type="button" id="btn_search" class="btn btn-purple btn-xs" style="height:30px">
-												검색 <i class="icon-search icon-on-left bigger-120"></i>
+												검 색 <i class="icon-search icon-on-left bigger-120"></i>
 											</button>
 										</span>
 								</div>
@@ -101,21 +101,21 @@
 							    <div class="widget-toolbar no-border" style="float:left">
 			                     <button id="btn_jqGridList"  type="button" class="btn btn-success btn-xs reg-mode edit-mode view-mode">
 			                       <i class="icon-align-justify bigger-120"></i>
-			                       <strong>목록</strong>
+			                       <strong>목 록</strong>
 			                     </button>
 			                 </div>
 			                 <div class="widget-toolbar no-border" style="margin-top:5px">
 				                   <button id="btn_regForm" type="button" class="btn btn-success btn-xs reg-mode">
 				                     <i class="icon-ok bigger-120"></i>
-				                     <strong>등록</strong>
+				                     <strong>등 록</strong>
 				                   </button>
 				                   <button id="btn_editForm" type="button" class="btn btn-primary btn-xs edit-mode">
 				                    <i class="icon-edit bigger-120"></i>
-				                    <strong>수정</strong>
+				                    <strong>수 정</strong>
 				                   </button>
 				                   <button id="btn_delForm" type="button" class="btn btn-danger btn-xs edit-mode">
 				                    <i class="icon-trash bigger-120"></i>
-				                    <strong>삭제</strong>
+				                    <strong>삭 제</strong>
 				                   </button>
 								     <button id="btn_download" type="button" class="btn btn-success btn-xs edit-mode view-mode">
 										<i class="icon-download-alt bigger-120"></i> 

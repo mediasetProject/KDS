@@ -3,6 +3,7 @@ package com.mediaset.kdshp.support;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -47,8 +48,10 @@ public class SupportController {
 	@Autowired
 	private MailSendComponent mailSender;
 	
-	private String NOTICE_DIR = "notice";
 	private String SLASH = "/";
+	private String NOTICE_DIR = "notice";
+	private String REPORT_DIR = "report";
+	int THIS_YEAR              = Calendar.getInstance().get(Calendar.YEAR);
 	
 	private String noticeSqlMap = "notice_sqlMap.";
 	private String reportqlMap  = "report_sqlMap.";
@@ -355,7 +358,7 @@ public class SupportController {
 	 * <p>파일 다운로드</p>
 	 * <br>
 	 * 
-	 * @return ModelAndView - bean id="download", com.mediaset.oasismis.util.DownloadView.java 참조
+	 * @return ModelAndView - bean id="download"
 	 */
 	@RequestMapping(value="/support/notice/download", method=RequestMethod.POST)
 	public ModelAndView getAttachedFile(HttpServletRequest request,@RequestParam Map<String, Object> mMap) throws IOException {
@@ -370,6 +373,9 @@ public class SupportController {
 		FileUtil.copyFile(storageDir + this.SLASH + sourceFile,
 				           storageDir + this.SLASH + targetFile);
 		
+		//복사본 삭제
+		//...
+		
 		
 		logger.info("Msg> DisConnect(SupportController > getAttachedFile)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
 		
@@ -380,6 +386,54 @@ public class SupportController {
 	
 	
     /*****************************	고객지원 - 보도자료 *****************************/	
+	
+	
+	
+	/**
+	 * <p>탭 리스트 카테고리</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/getAllTabCategories",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject getAllTabCategories(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > getAllTabCategories)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		ArrayList<HashMap<String,String>> tabList = new ArrayList<HashMap<String,String>>();
+		
+		try {
+			
+			List<HashMap<String,String>> ctgList = sqlMap.queryForList(reportqlMap + "getAllTabCategories");
+			if (ctgList.size() > 0 ) {
+				
+				HashMap<String,String> tabItem = null;
+				
+				for (int i = 0; i < ctgList.size(); i++) {
+					  tabItem  = new HashMap<>();
+					  tabItem.put("ctg_code", ctgList.get(i).get("ctg_code"));
+					  tabItem.put("ctg_name", ctgList.get(i).get("ctg_name"));
+					  tabList.add(tabItem);
+				}
+			}
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result" , resultcode);
+		 jsonObj.put("tablist", tabList);
+		
+		logger.info("Msg> DisConnect(SupportController > getAllTabCategories)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
 	
 	/**
 	 * <p>탭 리스트</p>
@@ -414,7 +468,6 @@ public class SupportController {
 					  tabList.add(tabItem);
 				}
 			}
-			
 		  } catch (Exception e) {
 			resultcode = AjaxResultCode.FAIL;
 		 }
@@ -467,7 +520,6 @@ public class SupportController {
 			}
 			
 		  } catch (Exception e) {
-			  System.out.println(e.getMessage());
 			resultcode = AjaxResultCode.FAIL;
 		 }
 		
@@ -478,6 +530,196 @@ public class SupportController {
 		
 		return jsonObj;  
 	}
+	
+	
+	
+	/**
+	 * <p>보도자료 등록</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/addReport",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject addReport(HttpServletRequest request, jqGridParameters jqGridParam, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > addReport)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		JSONObject jsonObj =  new JSONObject();
+
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			 //줄바꿈 처리
+			  mMap.put("content", mMap.get("content").toString().replace("\r\n", "<br/>"));
+			  fileUplad_inserReport(request, mMap);
+			  
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result", resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > addReport)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		return jsonObj;  
+	}
+	
+	/**
+	 * <p>보도자료 업데이트</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/updateReportOne",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject updateReportOne(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > updateReportOne)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		try {
+			   //줄바꿈 처리
+			   mMap.put("content", mMap.get("content").toString().replace("\r\n", "<br/>"));
+             sqlMap.update(reportqlMap + "updateReportOne", mMap);			
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result" , resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > updateReportOne)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		return jsonObj;  
+	}
+	
+	
+	/**
+	 * <p>보도자료 삭제</p>
+	 * <br>
+	 * 
+	 * @param request HttpServletRequest
+	 * @param mMap Map
+	 * @return JSONObject
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/support/report/deleteReportOne",headers="Accept=application/json", 
+					  method=RequestMethod.POST)
+	public @ResponseBody JSONObject deleteReportOne(HttpServletRequest request, @RequestParam Map<String, Object> mMap){
+		
+		logger.info("Msg> Connect(SupportController > deleteReportOne)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		
+		JSONObject jsonObj =  new JSONObject();
+		int resultcode = AjaxResultCode.SUCCESS;
+		
+		String storageDir = XmlFileManager.getOnlyValue((JSONArray)(request.getSession().getAttribute("storage_path")));
+		
+		try {
+			  HashMap<String,String> delInfo = (HashMap<String,String>)sqlMap.queryForObject(reportqlMap + "getReportOne", mMap);
+			  
+			   String image_path = delInfo.get("image_path");
+			   String video_path = delInfo.get("video_path");
+			   
+			   if(image_path != null && !image_path.trim().equals("")){
+				   new File(storageDir + this.SLASH + image_path).delete();
+			   }
+			   
+			   if(video_path != null && !video_path.trim().equals("")){
+				   new File(storageDir + this.SLASH + video_path).delete();
+			   }
+			
+             sqlMap.delete(reportqlMap + "deleteReportOne", mMap);	
+               
+               
+		  } catch (Exception e) {
+			resultcode = AjaxResultCode.FAIL;
+		 }
+		
+		 jsonObj.put("result" , resultcode);
+		
+		logger.info("Msg> DisConnect(SupportController > deleteReportOne)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+		return jsonObj;  
+	}
+	
+ private void fileUplad_inserReport(HttpServletRequest request, Map<String, Object> mMap)throws Exception{
+		
+		logger.info("Msg> Connect(SupportController > fileUplad_inserReport)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+
+		
+	    String storageDir = XmlFileManager.getOnlyValue((JSONArray)(request.getSession().getAttribute("storage_path")));
+	    
+	    String fileUrl     = null;
+	    String orgFileName = null;
+	    String fileExt     = null;
+	    String image_path  = null;
+	    String video_path  = null;
+	    String type        = null;
+	    
+			
+		 if((mMap.get("upload_file_chk").equals("true"))){
+			
+		    String tab_category = mMap.get("tab_category").toString();
+			 
+			// 업로드 파일 저장
+			fileUrl     = mMap.get("upload_file_path").toString().trim();
+			orgFileName = mMap.get("fileName").toString().trim();	
+			fileExt     = mMap.get("fileExt").toString().trim();	
+			type        = mMap.get("fileType").toString().trim();
+			
+			//DB에 저장되는 파일명 생성
+			String fileName = "report_"+ DateUtil.dateToStrTime(new Date(), DateUtil.DATE_TO_STR_TIME_SEP_KEY_0) + "." + fileExt;
+			String filePath = this.REPORT_DIR + this.SLASH + THIS_YEAR + this.SLASH + tab_category;
+			
+			
+			// 임시폴더에서 복사
+			FileUtil.copyFile(storageDir + this.SLASH + fileUrl,
+					           storageDir + this.SLASH + filePath, 
+					           storageDir + this.SLASH + filePath + this.SLASH + fileName);
+			
+			//이미지 비디오 타입에 따른 처리
+			   if(type.equals("image")){
+				   image_path = filePath + this.SLASH + fileName;
+				   video_path = " ";
+				   
+			   }else if(type.equals("video")){
+				   
+				   //동영상 스크린샷 이미지 저장 및 처리
+				   // ...
+				   
+				   image_path = " "; // 스크린샷 이미지
+				   video_path = filePath + this.SLASH + fileName;
+			   }
+			    
+		    }else{
+		    	
+		    	orgFileName   = " ";
+		    	image_path    = " ";
+		    	video_path    = " ";
+		    	type          = "normal";
+		    }
+		   
+			 mMap.put("file_name" , orgFileName);
+			 mMap.put("image_path", image_path);
+			 mMap.put("video_path", video_path);
+			 mMap.put("file_type" , type);
+		 	
+			// 임시폴더 삭제
+		   File tmpDir = new File(storageDir + this.SLASH + KDSCodeMaster.FILE_TEMP_PATH);
+		   if(tmpDir.exists()){  FileUtil.deleteFolder(tmpDir); }
+			
+			sqlMap.insert(reportqlMap + "addReportOne", mMap);
+		
+		
+		logger.info("Msg> DisConnect(SupportController > fileUplad_inserReport)-Time: *************** " +  new Date(System.currentTimeMillis()) + " ***************");
+	}
+	
+	
 	
 	
 	

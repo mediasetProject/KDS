@@ -70,9 +70,13 @@ public class FileUploadController {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile file = multipartRequest.getFile("file_input");
 		
-		String fileName = file.getOriginalFilename().trim();
+		String fileName     = file.getOriginalFilename().trim();
 		String onlyFileName = fileName.substring(0, fileName.lastIndexOf("."));
-		String fileExt  = fileName.substring(fileName.lastIndexOf(".")+1 , fileName.length());
+		String fileExt      = fileName.substring(fileName.lastIndexOf(".")+1 , fileName.length());
+		
+		String fileContentType = file.getContentType();
+		String fileType        = fileContentType.substring(0,fileContentType.lastIndexOf("/"));
+		
 		long   fileSize = file.getSize();
 		
 		if(fileSize <= 0 ){
@@ -105,6 +109,7 @@ public class FileUploadController {
 						         " \"message\":\"" + message      + "\"," +
 						         " \"fileName\":\""+ onlyFileName + "\"," +
 						         " \"fileExt\":\"" + fileExt      + "\"," +
+						         " \"fileType\":\""+ fileType      + "\"," +
 						         " \"fileUrl\":\"" + fileUrl      + "\"}";
 	
 		HttpHeaders responseHeaders = new HttpHeaders();

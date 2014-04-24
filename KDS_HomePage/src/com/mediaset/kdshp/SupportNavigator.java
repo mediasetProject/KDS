@@ -74,7 +74,6 @@ public class SupportNavigator {
 				}
 				request.setAttribute("videoList", videoList);
 			}
-			logger.debug(videoList.size()+"++++++++++++++++++++++++++");
 		}
 		
 		
